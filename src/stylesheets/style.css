@@ -15,17 +15,30 @@
       brightness(104%) contrast(107%);
     height: auto;
   }
+
+  & button {
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+  }
 }
 
 body {
   background-color: var(--blue);
+  padding: 30px 50px;
 
   & .main-content {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    & .open-sidebar-btn {
+      width: 65px;
+      align-self: flex-start;
+    }
 
     & .header {
-      width: 60%;
+      width: 70%;
       display: grid;
       grid-template-columns: 1fr 2fr;
 
