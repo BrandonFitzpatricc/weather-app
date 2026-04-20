@@ -40,7 +40,7 @@ body {
     & .header {
       width: 70%;
       display: grid;
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: minmax(375px, 1fr) minmax(375px, 2fr);
 
       & .temp.current {
         font-size: 72px;
