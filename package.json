@@ -30,6 +30,7 @@
     "eslint": "^10.2.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^17.4.0",
+    "html-loader": "^5.1.0",
     "html-webpack-plugin": "^5.6.6",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
