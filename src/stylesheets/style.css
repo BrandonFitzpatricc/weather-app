@@ -1,7 +1,55 @@
 :root {
-    --text-color: #FFFFFF;
-    --blue: #48B0E9;
-    --light-blue: #6FBBE4;
-    --dark-blue: #0A84C7;
-    --dark-blue-selected: #0974AF
+  --text-color: #ffffff;
+  --blue: #48b0e9;
+  --light-blue: #6fbbe4;
+  --dark-blue: #0a84c7;
+  --dark-blue-selected: #0974af;
+}
+
+* {
+  font-weight: bold;
+  color: var(--text-color);
+
+  & .icon {
+    filter: invert(96%) sepia(4%) saturate(16%) hue-rotate(168deg)
+      brightness(104%) contrast(107%);
+    height: auto;
+  }
+}
+
+body {
+  background-color: var(--blue);
+
+  & .main-content {
+    display: flex;
+    justify-content: center;
+
+    & .header {
+      width: 60%;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+
+      & .temp.current {
+        font-size: 72px;
+        align-self: end;
+        margin-bottom: -20px;
+      }
+
+      & .location-name {
+        font-size: 38px;
+      }
+
+      & .temp-info {
+        display: flex;
+        justify-content: space-between;
+        font-size: 20px;
+      }
+
+      & .icon.weather {
+        grid-area: 1 / 2 / 4 / 3;
+        justify-self: end;
+        width: 250px;
+      }
+    }
+  }
 }
