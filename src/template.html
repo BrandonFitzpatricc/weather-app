@@ -8,7 +8,13 @@
   <body>
     <div class="main-content">
       <button class="open-sidebar-btn">
-        <img class="icon" src="./icons/input-icons/open-sidebar.svg" alt="menu selection icon" width="65" height="65">
+        <img
+          class="icon"
+          src="./icons/input-icons/open-sidebar.svg"
+          alt="menu selection icon"
+          width="65"
+          height="65"
+        />
       </button>
 
       <div class="header">
@@ -19,18 +25,30 @@
           <div class="temp high">High 80°</div>
           <div class="temp low">Low 55°</div>
         </div>
+
         <img
           class="icon weather"
           src="./icons/weather-icons/partly-cloudy-day.svg"
-          alt="partly cloudy weather icon"
+          alt="partly cloudy day weather icon"
           width="300"
           height="300"
         />
       </div>
 
-      <div class="weather-info-hourly"></div>
+      <div class="weather-info hourly">
+        <div class="entry">
+          <div class="time">12 PM</div>
+          <img
+            class="icon weather"
+            src="./icons/weather-icons/partly-cloudy-day.svg"
+            alt="partly cloudy day icon"
+            width="50"
+            height="50"
+          />
+          <div class="temp">72°</div>
+        </div>
 
-      <div class="weather-info-daily"></div>
+      <div class="weather-info daily"></div>
     </div>
   </body>
 </html>

@@ -38,7 +38,8 @@ body {
     }
 
     & .header {
-      width: 70%;
+      width: 80%;
+      margin-bottom: 50px;
       display: grid;
       grid-template-columns: minmax(375px, 1fr) minmax(375px, 2fr);
 
@@ -62,6 +63,39 @@ body {
         grid-area: 1 / 2 / 4 / 3;
         justify-self: end;
         width: 250px;
+      }
+    }
+  }
+
+  & .weather-info {
+    width: 90%;
+    background-color: var(--light-blue);
+    border-radius: 15px;
+    padding: 15px 30px;
+
+    & .temp {
+      font-size: 20px;
+    }
+
+    & .icon.weather {
+      width: 50px;
+    }
+
+    &.hourly {
+      display: flex;
+      gap: 40px;
+      overflow: scroll;
+
+      & .entry {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2px;
+
+        & .time {
+          text-wrap: nowrap;
+        }
       }
     }
   }
