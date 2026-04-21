@@ -25,14 +25,15 @@
 
 body {
   background-color: var(--blue);
-  padding: 30px 50px;
+  padding: 30px 0;
 
   & .main-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    & > div {
+      margin: auto;
+    }
 
     & .open-sidebar-btn {
+      margin-left: 25px;
       width: 65px;
       align-self: flex-start;
     }
@@ -41,7 +42,7 @@ body {
       width: 80%;
       margin-bottom: 50px;
       display: grid;
-      grid-template-columns: minmax(375px, 1fr) minmax(375px, 2fr);
+      grid-template-columns: minmax(375px, 1fr) minmax(375px, 3fr);
 
       & .temp.current {
         font-size: 72px;
@@ -68,7 +69,7 @@ body {
   }
 
   & .weather-info {
-    width: 90%;
+    width: max(900px, 90%);
     background-color: var(--light-blue);
     border-radius: 15px;
     padding: 15px 30px;
