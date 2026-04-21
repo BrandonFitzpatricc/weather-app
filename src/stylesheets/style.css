@@ -74,7 +74,7 @@ body {
     border-radius: 15px;
     padding: 15px 30px;
 
-    & .icon.weather {
+    & .icon {
       width: 50px;
     }
 
