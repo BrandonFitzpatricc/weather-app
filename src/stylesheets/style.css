@@ -69,20 +69,17 @@ body {
   }
 
   & .weather-info {
-    width: max(850px, 90%);
+    width: max(850px, 85%);
     background-color: var(--light-blue);
     border-radius: 15px;
     padding: 15px 30px;
-
-    & .temp {
-      font-size: 20px;
-    }
 
     & .icon.weather {
       width: 50px;
     }
 
     &.hourly {
+      margin-bottom: 35px;
       display: flex;
       gap: 40px;
       overflow: scroll;
@@ -96,6 +93,37 @@ body {
 
         & .time {
           text-wrap: nowrap;
+        }
+
+        & .temp {
+          font-size: 20px;
+        }
+      }
+    }
+
+    &.daily {
+      & .entry {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & + .entry {
+          margin-top: 25px;
+        }
+
+        & .week-day {
+          font-size: 25px;
+        }
+
+        & .sub-info {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+
+          & .rain-percentage,
+          .temp {
+            font-size: 22px;
+          }
         }
       }
     }
