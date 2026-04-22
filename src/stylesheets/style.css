@@ -212,7 +212,7 @@ body {
     left: 0;
 
     & .new-location-form {
-      width: max(450px, 80%);
+      width: max(450px, 60%);
       height: 600px;
       background-color: var(--blue);
       border-radius: 25px;
@@ -255,6 +255,11 @@ body {
         width: max(200px, 20%);
         border: 3px solid #ffffff;
         padding: 5px;
+      }
+
+      & .error-text {
+        margin-top: 20px;
+        font-size: 30px;
       }
     }
   }
