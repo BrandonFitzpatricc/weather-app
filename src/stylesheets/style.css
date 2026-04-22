@@ -50,6 +50,7 @@ body {
       margin-bottom: 50px;
       display: grid;
       grid-template-columns: minmax(375px, 1fr) minmax(375px, 3fr);
+      position: relative;
 
       & .temp.current {
         font-size: 72px;
@@ -71,6 +72,16 @@ body {
         grid-area: 1 / 2 / 4 / 3;
         justify-self: end;
         width: 250px;
+      }
+
+      & .temp-converter-btn {
+        position: absolute;
+        top: 50px;
+        left: 150px;
+        width: 225px;
+        border: 3px solid #FFFFFF;
+        padding: 1px 15px;
+        font-size: 35px;
       }
     }
 
