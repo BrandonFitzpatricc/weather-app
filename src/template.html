@@ -1,7 +1,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather</title>
   </head>
 
@@ -69,11 +68,15 @@
               class="icon weather"
               src="./icons/weather-icons/partly-cloudy-day.svg"
               alt="partly cloudy day weather icon"
+              width="50"
+              height="50"
             />
             <img
               class="icon weather"
               src="./icons/weather-icons/clear-night.svg"
               alt="clear night weather icon"
+              width="50"
+              height="50"
             />
           </div>
 
@@ -102,11 +105,15 @@
               class="icon weather"
               src="./icons/weather-icons/partly-cloudy-day.svg"
               alt="partly cloudy day weather icon"
+              width="50"
+              height="50"
             />
             <img
               class="icon weather"
               src="./icons/weather-icons/clear-night.svg"
               alt="clear night weather icon"
+              width="50"
+              height="50"
             />
           </div>
 
@@ -195,6 +202,24 @@
           <div class="btn-text">New Location</div>
         </button>
       </div>
+    </div>
+
+    <div id="new-location-prompt" class="new-location-prompt">
+      <form id="new-location-form" class="new-location-form">
+        <div class="form-title">New Location</div>
+
+        <div class="form-field">
+          <label for="city">City</label>
+          <input type="text" id="city" required pattern="^[a-zA-Z\s]*$" />
+        </div>
+
+        <div class="form-field">
+          <label for="state">State</label>
+          <input type="text" id="state" required pattern="^[a-zA-Z\s]*$" />
+        </div>
+
+        <button class="enter-btn" type="submit">Enter</button>
+      </form>
     </div>
   </body>
 </html>

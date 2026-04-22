@@ -22,6 +22,10 @@
     background-color: inherit;
     cursor: pointer;
   }
+
+  &.hidden {
+    visibility: hidden;
+  }
 }
 
 body {
@@ -142,10 +146,6 @@ body {
     top: 0;
     left: 0;
 
-    & .hidden {
-      visibility: hidden;
-    }
-
     & .heading {
       padding: 25px 35px 10px;
       display: flex;
@@ -185,6 +185,65 @@ body {
 
       &.selected {
         background-color: var(--dark-blue-selected);
+      }
+    }
+  }
+
+  & .new-location-prompt {
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-blue);
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    & .new-location-form {
+      width: max(450px, 80%);
+      height: 600px;
+      background-color: var(--blue);
+      border-radius: 25px;
+      text-align: center;
+      padding: 50px;
+
+      & .form-title {
+        font-size: 40px;
+        margin-bottom: 30px;
+        text-wrap: nowrap;
+      }
+
+      & .form-field {
+        margin-bottom: 20px;
+
+        & label,
+        input {
+          display: block;
+          width: 100%;
+        }
+
+        & label {
+          text-align: left;
+          font-size: 30px;
+        }
+
+        & input {
+          background-color: inherit;
+          border: 3px solid #ffffff;
+          padding: 10px;
+
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+
+      & .enter-btn {
+        margin-top: 30px;
+        font-size: 30px;
+        width: max(200px, 20%);
+        border: 3px solid #ffffff;
+        padding: 5px;
       }
     }
   }
