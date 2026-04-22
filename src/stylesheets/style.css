@@ -49,7 +49,7 @@ body {
       width: 80%;
       margin-bottom: 50px;
       display: grid;
-      grid-template-columns: minmax(375px, 1fr) minmax(375px, 3fr);
+      grid-template-columns: minmax(400px, 1fr) minmax(350px, 3fr);
       position: relative;
 
       & .temp.current {
@@ -59,6 +59,7 @@ body {
       }
 
       & .location-name {
+        text-wrap: nowrap;
         font-size: 38px;
       }
 
@@ -221,7 +222,6 @@ body {
       & .form-title {
         font-size: 40px;
         margin-bottom: 30px;
-        text-wrap: nowrap;
       }
 
       & .form-field {
