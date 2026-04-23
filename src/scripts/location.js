@@ -2,13 +2,13 @@ class Location {
   #id;
   #city;
   #state;
-  #isBeingViewed;
+  #isOpen;
 
-  constructor(city, state, isBeingViewed) {
+  constructor(city, state, isOpen) {
     this.#id = crypto.randomUUID();
     this.#city = city;
     this.#state = state;
-    this.#isBeingViewed = isBeingViewed;
+    this.#isOpen = isOpen;
   }
 
   get id() {
@@ -23,19 +23,19 @@ class Location {
     return this.#state;
   }
 
-  get isBeingViewed() {
-    return this.#isBeingViewed;
+  get isOpen() {
+    return this.#isOpen;
   }
 
-  set isBeingViewed(value) {
-    this.#isBeingViewed = value;
+  set isOpen(value) {
+    this.#isOpen = value;
   }
 
   toJSON() {
     return JSON.stringify({
       city: this.#city,
       state: this.#state,
-      isBeingViewed: this.#isBeingViewed,
+      isOpen: this.#isOpen,
     });
   }
 }

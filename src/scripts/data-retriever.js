@@ -17,8 +17,7 @@ const getUserLocation = () => {
   return new Promise((resolve, reject) => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
-        (position) =>
-          resolve(position),
+        (position) => resolve(position),
         (error) => {
           // If the request failed due to an internal error, the application should attempt
           // to request the user location again.
