@@ -77,12 +77,12 @@ body {
 
       & .temp-converter-btn {
         position: absolute;
-        top: 50px;
+        top: 55px;
         left: 150px;
         width: 225px;
         border: 3px solid #FFFFFF;
         padding: 1px 15px;
-        font-size: 35px;
+        font-size: 30px;
       }
     }
 
