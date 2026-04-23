@@ -18,7 +18,7 @@ const getUserLocation = () => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
         (position) =>
-          resolve([position.coords.latitude, position.coords.longitude]),
+          resolve(position),
         (error) => {
           // If the request failed due to an internal error, the application should attempt
           // to request the user location again.
