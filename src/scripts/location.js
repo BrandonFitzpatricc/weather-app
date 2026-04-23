@@ -2,6 +2,9 @@ class Location {
   #id;
   #city;
   #state;
+  // Only one location will ever be open at a time. This location is tracked to ensure that
+  // it will be reopened when the user revisits the website, and that it will be highlighted
+  // in the sidebar.
   #isOpen;
 
   constructor(city, state, isOpen) {
