@@ -1,12 +1,18 @@
 class Location {
+  #id;
   #city;
   #state;
   #isBeingViewed;
 
   constructor(city, state, isBeingViewed) {
+    this.#id = crypto.randomUUID();
     this.#city = city;
     this.#state = state;
     this.#isBeingViewed = isBeingViewed;
+  }
+
+  get id() {
+    return this.#id;
   }
 
   get city() {
@@ -33,3 +39,5 @@ class Location {
     });
   }
 }
+
+export { Location };
