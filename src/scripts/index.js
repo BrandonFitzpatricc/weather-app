@@ -4,12 +4,11 @@ import "../stylesheets/style.css";
 import { fetchWeatherInfo, getUserCoordinates } from "./data-retriever";
 import { processWeatherInfo, processUserCoordinates } from "./data-processor";
 
-getUserCoordinates().then((userCoordinates) =>
-  fetchWeatherInfo(processUserCoordinates(userCoordinates)).then((weatherInfo) =>
-    console.log(weatherInfo),
-  ),
+const userCoordinates = processUserCoordinates(await getUserCoordinates());
+const coordinatesWeatherInfo = processWeatherInfo(
+  await fetchWeatherInfo(userCoordinates),
 );
+console.log(coordinatesWeatherInfo)
 
-fetchWeatherInfo(["Shirley", "New York"]).then((weatherInfo) =>
-  console.log(processWeatherInfo(weatherInfo)),
-);
+const addressWeatherInfo = processWeatherInfo(await fetchWeatherInfo(["Shirley"], ["New York"]));
+console.log(addressWeatherInfo);
