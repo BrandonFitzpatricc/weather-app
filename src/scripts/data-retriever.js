@@ -27,6 +27,8 @@ const getUserLocation = () => {
           reject(new Error("Location Permission Rejected"));
         },
       );
+    } else {
+      reject(new Error("Location Unobtainable"));
     }
   });
 };
