@@ -1,4 +1,4 @@
-const fetchWeatherInfo = async (location) => {
+const fetchWeatherInfo = (location) => {
   try {
     return loadJson(
       `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location[0]},${location[1]}/next6days?key=KGKY4HECU7WY8LDG23LNV232C&include=days,hours&elements=temp,tempmax,tempmin,feelslike,icon,datetime`,
