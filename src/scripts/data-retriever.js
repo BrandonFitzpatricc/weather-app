@@ -42,7 +42,6 @@ const getUserCoordinates = () => {
           if (error.code !== 1) {
             return getUserCoordinates();
           }
-          reject(new Error("Location Permission Rejected"));
         },
       );
     } else {
