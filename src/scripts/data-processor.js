@@ -2,8 +2,8 @@ const processWeatherInfo = (weatherInfo) => {
   return weatherInfo.days;
 };
 
-const processUserLocation = (userLocation) => {
-  return [userLocation.coords.latitude, userLocation.coords.longitude];
+const processUserCoordinates = (userCoordinates) => {
+  return [userCoordinates.coords.latitude, userCoordinates.coords.longitude];
 };
 
-export { processWeatherInfo, processUserLocation };
+export { processWeatherInfo, processUserCoordinates };

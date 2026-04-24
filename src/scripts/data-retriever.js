@@ -13,22 +13,22 @@ const fetchWeatherInfo = (location) => {
   }
 };
 
-const getUserLocation = () => {
+const getUserCoordinates = () => {
   return new Promise((resolve, reject) => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
         (position) => resolve(position),
         (error) => {
           // If the request failed due to an internal error, the application should attempt
-          // to request the user location again.
+          // to request the user coordinates again.
           if (error.code !== 1) {
-            return getUserLocation();
+            return getUserCoordinates();
           }
           reject(new Error("Location Permission Rejected"));
         },
       );
     } else {
-      reject(new Error("Location Unobtainable"));
+      reject(new Error("Coordinates Unobtainable"));
     }
   });
 };
@@ -41,4 +41,4 @@ async function loadJson(url) {
   throw new Error(response.status);
 }
 
-export { fetchWeatherInfo, getUserLocation };
+export { fetchWeatherInfo, getUserCoordinates };

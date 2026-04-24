@@ -23,7 +23,7 @@ const closeCurrentOpenLocation = () => {
 };
 
 // The output of this function will be read by the locations sidebar controller and used for
-// creating project tabs
+// creating location tabs
 const getLocations = () => {
     return locations;
 }

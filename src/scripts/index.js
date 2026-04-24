@@ -1,11 +1,11 @@
 import "../stylesheets/custom-reset.css";
 import "../stylesheets/style.css";
 
-import { fetchWeatherInfo, getUserLocation } from "./data-retriever";
-import { processWeatherInfo, processUserLocation } from "./data-processor";
+import { fetchWeatherInfo, getUserCoordinates } from "./data-retriever";
+import { processWeatherInfo, processUserCoordinates } from "./data-processor";
 
-getUserLocation().then((userLocation) =>
-  fetchWeatherInfo(processUserLocation(userLocation)).then((weatherInfo) =>
+getUserCoordinates().then((userCoordinates) =>
+  fetchWeatherInfo(processUserCoordinates(userCoordinates)).then((weatherInfo) =>
     console.log(weatherInfo),
   ),
 );
