@@ -13,11 +13,6 @@ import {
   processUserCoordinates,
 } from "./data-processor";
 
-import { convertToCelsius, convertToFahrenheit } from "./temp-converter";
-
-console.log(convertToCelsius(63));
-console.log(convertToFahrenheit(17.2));
-
 const userCoordinates = processUserCoordinates(await getUserCoordinates());
 
 const userAddress = processUserAddress(await fetchUserAddress(userCoordinates));
@@ -27,8 +22,3 @@ const coordinatesWeatherInfo = processWeatherInfo(
   await fetchWeatherInfo(userCoordinates),
 );
 console.log(coordinatesWeatherInfo);
-
-const addressWeatherInfo = processWeatherInfo(
-  await fetchWeatherInfo(["Shirley"], ["New York"]),
-);
-console.log(addressWeatherInfo);
