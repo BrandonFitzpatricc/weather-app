@@ -25,9 +25,16 @@ const closeCurrentOpenLocation = () => {
 // The output of this function will be read by the locations sidebar controller and used for
 // creating location tabs
 const getLocations = () => {
-    return locations;
-}
+  return locations;
+};
 
 const atMaxLocations = () => locations.length === 10;
 
-export { addLocation, deleteLocation, findLocation, closeCurrentOpenLocation, getLocations, atMaxLocations }
+export {
+  addLocation,
+  deleteLocation,
+  findLocation,
+  closeCurrentOpenLocation,
+  getLocations,
+  atMaxLocations,
+};
