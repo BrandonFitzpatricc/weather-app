@@ -18,7 +18,9 @@
 
       <div class="header">
         <div class="temp current">80°</div>
-        <button id="temp-converter-btn" class="temp-converter-btn">Fahrenheit</button>
+        <button id="temp-converter-btn" class="temp-converter-btn">
+          Fahrenheit
+        </button>
         <div class="location-name">New York, NY</div>
         <div class="temp-info">
           <div class="temp feel-like">Feels like 81°</div>
@@ -205,7 +207,7 @@
       </div>
     </div>
 
-    <div id="new-location-prompt" class="new-location-prompt hidden">
+    <div id="new-location-prompt" class="new-location-prompt">
       <form id="new-location-form" class="new-location-form">
         <div class="form-title">New Location</div>
 
@@ -222,6 +224,10 @@
         <button class="enter-btn" type="submit">Enter</button>
 
         <div class="error-text hidden">Location Not Found</div>
+
+        <button id="back-btn" class="back-btn">
+          <img class="icon" src="./icons/input-icons/back.svg" alt="back icon" />
+        </button>
       </form>
     </div>
   </body>

@@ -218,6 +218,7 @@ body {
       border-radius: 25px;
       text-align: center;
       padding: 50px;
+      position: relative;
 
       & .form-title {
         font-size: 40px;
@@ -260,6 +261,13 @@ body {
       & .error-text {
         margin-top: 20px;
         font-size: 30px;
+      }
+
+      & .back-btn {
+        width: 65px;
+        position: absolute;
+        top: 15px;
+        left: 15px;
       }
     }
   }
