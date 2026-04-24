@@ -1,3 +1,6 @@
+// The location parameter will contain an array of two items. Either [city, state],
+// or [latitude, longitude] if the user provides their coordinates. Both are valid ways
+// to retrieve weather information.
 const fetchWeatherInfo = (location) => {
   try {
     return loadJson(
@@ -10,6 +13,21 @@ const fetchWeatherInfo = (location) => {
       return fetchWeatherInfo(location);
     }
     throw new Error("Location Not Found", { cause: error });
+  }
+};
+
+// If coordinates are used to retrieve weather information, the corresponding address to
+// those coordinates will need to be obtained so that they can be displayed.
+const fetchUserAddress = (coordinates) => {
+  try {
+    return loadJson(
+      `https://api.tomtom.com/search/2/reverseGeocode/${coordinates[0]},${coordinates[1]}}.json?key=DriIcScbvrUfDbEU1DyR0eyp3J3VjBk6`,
+    );
+  } catch (error) {
+    if (error === 500 || error === 504) {
+      return fetchUserAddress(coordinates);
+    }
+    throw new Error("Address Not Found", { cause: error });
   }
 };
 
@@ -41,4 +59,4 @@ async function loadJson(url) {
   throw new Error(response.status);
 }
 
-export { fetchWeatherInfo, getUserCoordinates };
+export { fetchWeatherInfo, getUserCoordinates, fetchUserAddress };
