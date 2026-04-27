@@ -1,14 +1,17 @@
 import { fetchWeatherInfo } from "./data-retriever";
 import { processWeatherInfo } from "./data-processor";
+import { addLocation, getLocations } from "./location-manager";
 
 const form = document.querySelector("#new-location-form");
 const formInputs = form.querySelectorAll("input");
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
-
+  const location = { city: formInputs[0].value, state: formInputs[1].value };
+  addLocation(location.city, location.state, true);
+  console.log(getLocations());
   const addressWeatherInfo = processWeatherInfo(
-    await fetchWeatherInfo([formInputs[0].value, formInputs[1].value]),
+    await fetchWeatherInfo(location),
   );
   console.log(addressWeatherInfo);
   form.reset();
@@ -30,3 +33,6 @@ function checkErrors(event) {
     input.setCustomValidity("");
   }
 }
+
+// Temporary export to ensure the form controller is detected as a dependency.
+export { checkErrors }

@@ -34,7 +34,7 @@ const atMaxLocations = () => locations.length === 10;
 
 function locationAlreadySaved(city, state) {
   return Boolean(
-    !locations.find(
+    locations.find(
       (location) => location.city === city && location.state === state,
     ),
   );

@@ -9,6 +9,8 @@ import {
 
 import { processWeatherInfo, processUserAddress } from "./data-processor";
 
+import { checkErrors } from "./form-controller";
+
 getUserPosition().then(async (coordinates) => {
   const userAddress = processUserAddress(await fetchUserAddress(coordinates));
   console.log(userAddress);
