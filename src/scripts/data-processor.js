@@ -3,10 +3,11 @@ const processWeatherInfo = (weatherInfo) => {
 };
 
 const processUserAddress = (userAddress) => {
-  return [
-    userAddress.addresses[0].address.localName,
-    userAddress.addresses[0].address.countrySubdivisionCode,
-  ];
+  userAddress = userAddress.addresses[0].address
+  return {
+    city: userAddress.localName,
+    state: userAddress.countrySubdivisionCode,
+  };
 };
 
 const processUserCoordinates = (userCoordinates) => {
