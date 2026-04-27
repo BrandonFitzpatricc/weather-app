@@ -5,7 +5,13 @@ import { addLocation } from "./location-manager";
 const form = document.querySelector("#new-location-form");
 const formInputs = form.querySelectorAll("input");
 
-form.addEventListener("submit", async (event) => {
+form.addEventListener("submit", submitLocation);
+
+formInputs.forEach((input) => {
+  input.addEventListener("input", checkErrors);
+});
+
+async function submitLocation(event) {
   event.preventDefault();
   const location = { city: formInputs[0].value, state: formInputs[1].value };
   addLocation(location.city, location.state, true);
@@ -14,11 +20,7 @@ form.addEventListener("submit", async (event) => {
   );
   console.log(addressWeatherInfo);
   form.reset();
-});
-
-formInputs.forEach((input) => {
-  input.addEventListener("input", checkErrors);
-});
+}
 
 function checkErrors(event) {
   const input = event.target;
@@ -34,4 +36,4 @@ function checkErrors(event) {
 }
 
 // Temporary export to ensure the form controller is detected as a dependency.
-export { checkErrors }
+export { checkErrors };
