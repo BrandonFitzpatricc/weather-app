@@ -18,14 +18,14 @@ const fetchWeatherInfo = (location) => {
 
 // If coordinates are used to retrieve weather information, the corresponding address to
 // those coordinates will need to be obtained so that they can be displayed.
-const fetchUserAddress = (coordinates) => {
+const fetchUserAddress = (position) => {
   try {
     return loadJson(
-      `https://api.tomtom.com/search/2/reverseGeocode/${coordinates[0]},${coordinates[1]}}.json?key=DriIcScbvrUfDbEU1DyR0eyp3J3VjBk6`,
+      `https://api.tomtom.com/search/2/reverseGeocode/${position.coords.latitude},${position.coords.longitude}}.json?key=DriIcScbvrUfDbEU1DyR0eyp3J3VjBk6`,
     );
   } catch (error) {
     if (error === 500 || error === 504) {
-      return fetchUserAddress(coordinates);
+      return fetchUserAddress(position);
     }
     throw new Error("Address Not Found", { cause: error });
   }
