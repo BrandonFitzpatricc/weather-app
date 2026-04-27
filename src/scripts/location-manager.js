@@ -19,10 +19,10 @@ const findLocation = (id) => {
   return locations.find((location) => location.id === id);
 };
 
+const getOpenLocation = () => locations.find((location) => location.isOpen);
+
 // This will always run prior to the user opening a new location.
-const closeCurrentOpenLocation = () => {
-  locations.find((location) => location.isOpen).isOpen = false;
-};
+const closeOpenLocation = () => getOpenLocation().isOpen = false;
 
 // The output of this function will be read by the locations sidebar controller and used for
 // creating location tabs
