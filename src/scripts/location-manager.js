@@ -1,6 +1,6 @@
 import { Location } from "./location";
 
-const locations = [];
+const locations = [new Location("New York", "New York", true)];
 
 const addLocation = (city, state, isOpen) => {
   if (!locationAlreadySaved(city, state)) {
