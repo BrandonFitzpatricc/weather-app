@@ -1,6 +1,3 @@
-// The location parameter will contain an array of two items. Either [city, state],
-// or [latitude, longitude] if the user provides their coordinates. Both are valid ways
-// to retrieve weather information.
 const fetchWeatherInfo = (location) => {
   try {
     return loadJson(
@@ -16,8 +13,9 @@ const fetchWeatherInfo = (location) => {
   }
 };
 
-// If coordinates are used to retrieve weather information, the corresponding address to
-// those coordinates will need to be obtained so that they can be displayed.
+// If the application is able to retrieve the user's position, then it will use that position
+// to retrieve their address, which will be used for displaying city/state and retrieving
+// weather information.
 const fetchUserAddress = (position) => {
   try {
     return loadJson(
@@ -31,21 +29,21 @@ const fetchUserAddress = (position) => {
   }
 };
 
-const getUserCoordinates = () => {
+const getUserPosition = () => {
   return new Promise((resolve, reject) => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
         (position) => resolve(position),
         (error) => {
           // If the request failed due to an internal error, the application should attempt
-          // to request the user coordinates again.
+          // to request the user position again.
           if (error.code !== 1) {
-            return getUserCoordinates();
+            return getUserPosition();
           }
         },
       );
     } else {
-      reject(new Error("Coordinates Unobtainable"));
+      reject(new Error("Position Unobtainable"));
     }
   });
 };
@@ -58,4 +56,4 @@ async function loadJson(url) {
   throw new Error(response.status);
 }
 
-export { fetchWeatherInfo, getUserCoordinates, fetchUserAddress };
+export { fetchWeatherInfo, getUserPosition, fetchUserAddress };
