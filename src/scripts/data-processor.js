@@ -1,7 +1,14 @@
 import { addLocation } from "./location-manager";
+import { convertToFahrenheit, convertTemps } from "./temp-converter";
 
-const processWeatherInfo = (weatherInfo) => {
-  return weatherInfo.days;
+const processWeatherInfo = (weatherInfo, tempScale) => {
+  const days = weatherInfo.days;
+  if (tempScale === "Fahrenheit") {
+    days.forEach((dailyWeatherInfo) =>
+      convertTemps(dailyWeatherInfo, convertToFahrenheit),
+    );
+  }
+  return days;
 };
 
 const processUserAddress = (userAddress) => {

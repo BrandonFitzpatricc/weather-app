@@ -20,6 +20,6 @@ getUserPosition().then(async (coordinates) => {
   console.log(weatherInfo);
 });
 
-fetchWeatherInfo({ city: "New York", state: "NY" }).then((weatherInfo) => {
-  console.log(processWeatherInfo(weatherInfo));
+fetchWeatherInfo({ city: "Shirley", state: "NY" }).then((weatherInfo) => {
+  console.log(processWeatherInfo(weatherInfo, "Fahrenheit"));
 });
