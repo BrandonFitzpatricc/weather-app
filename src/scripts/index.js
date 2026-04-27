@@ -13,12 +13,10 @@ getUserPosition().then(async (coordinates) => {
   const userAddress = processUserAddress(await fetchUserAddress(coordinates));
   console.log(userAddress);
 
-  const coordinatesWeatherInfo = processWeatherInfo(
-    await fetchWeatherInfo(userAddress),
-  );
-  console.log(coordinatesWeatherInfo);
+  const weatherInfo = processWeatherInfo(await fetchWeatherInfo(userAddress));
+  console.log(weatherInfo);
 });
 
-fetchWeatherInfo(["Shirley", "New York"]).then((weatherInfo) => {
+fetchWeatherInfo({ city: "New York", state: "NY" }).then((weatherInfo) => {
   console.log(processWeatherInfo(weatherInfo));
 });
