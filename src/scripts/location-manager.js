@@ -3,7 +3,9 @@ import { Location } from "./location";
 const locations = [];
 
 const addLocation = (city, state, isOpen) => {
-  locations.push(new Location(city, state, isOpen));
+  if (!locationAlreadySaved(city, state)) {
+    locations.push(new Location(city, state, isOpen));
+  }
 };
 
 const deleteLocation = (id) => {
@@ -29,6 +31,14 @@ const getLocations = () => {
 };
 
 const atMaxLocations = () => locations.length === 10;
+
+function locationAlreadySaved(city, state) {
+  return Boolean(
+    !locations.find(
+      (location) => location.city === city && location.state === state,
+    ),
+  );
+}
 
 export {
   addLocation,
