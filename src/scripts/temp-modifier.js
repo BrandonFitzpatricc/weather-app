@@ -1,3 +1,5 @@
+// modifyFn will either be a function that converts temperatures to a different scale,
+// or a function that rounds temperatures to whole numbers.
 const modifyTemps = (dailyWeatherInfo, modifyFn) => {
   for (const infoType in dailyWeatherInfo) {
     if (isTempInfo(dailyWeatherInfo[infoType])) {
