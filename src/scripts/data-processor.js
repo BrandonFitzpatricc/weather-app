@@ -10,8 +10,4 @@ const processUserAddress = (userAddress) => {
   };
 };
 
-const processUserCoordinates = (userCoordinates) => {
-  return [userCoordinates.coords.latitude, userCoordinates.coords.longitude];
-};
-
-export { processWeatherInfo, processUserAddress, processUserCoordinates };
+export { processWeatherInfo, processUserAddress };

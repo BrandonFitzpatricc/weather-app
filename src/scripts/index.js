@@ -4,17 +4,12 @@ import "../stylesheets/style.css";
 import {
   fetchWeatherInfo,
   fetchUserAddress,
-  getUserCoordinates,
+  getUserPosition,
 } from "./data-retriever";
 
-import {
-  processWeatherInfo,
-  processUserAddress,
-  processUserCoordinates,
-} from "./data-processor";
+import { processWeatherInfo, processUserAddress } from "./data-processor";
 
-getUserCoordinates().then(async (coordinates) => {
-  coordinates = processUserCoordinates(coordinates);
+getUserPosition().then(async (coordinates) => {
   const userAddress = processUserAddress(await fetchUserAddress(coordinates));
   console.log(userAddress);
 
