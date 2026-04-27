@@ -14,7 +14,7 @@ import {
 } from "./data-processor";
 
 getUserCoordinates().then(async (coordinates) => {
-  coordinates = processUserCoordinates(coordinates)
+  coordinates = processUserCoordinates(coordinates);
   const userAddress = processUserAddress(await fetchUserAddress(coordinates));
   console.log(userAddress);
 
@@ -24,6 +24,6 @@ getUserCoordinates().then(async (coordinates) => {
   console.log(coordinatesWeatherInfo);
 });
 
-fetchWeatherInfo(["Shirley", "New York"]).then(weatherInfo => {
+fetchWeatherInfo(["Shirley", "New York"]).then((weatherInfo) => {
   console.log(processWeatherInfo(weatherInfo));
 });

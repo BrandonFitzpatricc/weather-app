@@ -4,7 +4,7 @@
 const fetchWeatherInfo = (location) => {
   try {
     return loadJson(
-      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location[0]},${location[1]}/next6days?key=KGKY4HECU7WY8LDG23LNV232C&include=days,hours&elements=temp,tempmax,tempmin,feelslike,icon,datetime`,
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location.city},${location.state}/next6days?key=KGKY4HECU7WY8LDG23LNV232C&include=days,hours&elements=temp,tempmax,tempmin,feelslike,icon,datetime`,
     );
   } catch (error) {
     // If the request failed due to a server error, the application should attempt
