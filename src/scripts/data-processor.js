@@ -7,7 +7,7 @@ const processWeatherInfo = (weatherInfo) => {
 const processUserAddress = (userAddress) => {
   userAddress = userAddress.addresses[0].address;
   const city = userAddress.localName;
-  const state = userAddress.countySubdivisionCode;
+  const state = userAddress.countrySubdivisionName;
   addLocation(city, state, true);
   return { city, state };
 };

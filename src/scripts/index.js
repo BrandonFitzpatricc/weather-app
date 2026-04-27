@@ -9,6 +9,7 @@ import {
 
 import { processWeatherInfo, processUserAddress } from "./data-processor";
 
+// Temporary import to ensure the form controller is detected as a dependency.
 import { checkErrors } from "./form-controller";
 
 getUserPosition().then(async (coordinates) => {
