@@ -17,14 +17,16 @@ const startup = () => {
       console.log("Weather information cannot be retrieved at this time."),
     );
 
-  getUserPosition().then(async (position) => {
-    try {
+  getUserPosition()
+    .then(async (position) => {
       const location = processUserAddress(await fetchUserAddress(position));
       console.log(processWeatherInfo(await fetchWeatherInfo(location)));
-    } catch {
-      console.log("Weather information could not be retrieved for this location.");
-    }
-  });
+    })
+    .catch(() => {
+      console.log(
+        "Weather information could not be retrieved for this location.",
+      );
+    });
 };
 
 export { startup };
