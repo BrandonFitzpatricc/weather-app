@@ -9,9 +9,13 @@ import { processWeatherInfo, processUserAddress } from "./data-processor";
 import { getOpenLocation } from "./location-manager";
 
 const startup = () => {
-  fetchWeatherInfo(getOpenLocation()).then((weatherInfo) => {
-    console.log(processWeatherInfo(weatherInfo, "Celsius"));
-  });
+  fetchWeatherInfo(getOpenLocation())
+    .then((weatherInfo) => {
+      console.log(processWeatherInfo(weatherInfo, "Celsius"));
+    })
+    .catch(() =>
+      console.log("Weather information cannot be retrieved at this time."),
+    );
 
   getUserPosition().then(async (position) => {
     const location = processUserAddress(await fetchUserAddress(position));

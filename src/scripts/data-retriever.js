@@ -1,35 +1,39 @@
-const fetchWeatherInfo = (location) => {
+const fetchWeatherInfo = async (location) => {
   try {
-    return loadJson(
+    return await loadJson(
       `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location.city},${location.state}/next6days?key=KGKY4HECU7WY8LDG23LNV232C&include=days,hours&elements=temp,tempmax,tempmin,feelslike,icon,datetime`,
     );
   } catch (error) {
     // If the request failed due to a server error, the application should attempt
     // to request the weather info again.
-    if (error === 500) {
+    if (error.message === "500") {
       return fetchWeatherInfo(location);
     }
-    throw new Error("Location Not Found", { cause: error });
+    throw new Error("Weather info cannot be retrieved.", {
+      cause: error,
+    });
   }
 };
 
 // If the application is able to retrieve the user's position, then it will use that position
 // to retrieve their address, which will be used for displaying city/state and retrieving
 // weather information.
-const fetchUserAddress = (position) => {
+const fetchUserAddress = async (position) => {
   try {
-    return loadJson(
+    return await loadJson(
       `https://api.tomtom.com/search/2/reverseGeocode/${position.coords.latitude},${position.coords.longitude}}.json?key=DriIcScbvrUfDbEU1DyR0eyp3J3VjBk6`,
     );
   } catch (error) {
-    if (error === 500 || error === 504) {
+    // If the request failed due to a server, the application should attempt
+    // to request the user address again.
+    if (error.message === "500" || error.message === "504") {
       return fetchUserAddress(position);
     }
-    throw new Error("Address Not Found", { cause: error });
+    throw new Error("Address cannot be retrieved.", { cause: error });
   }
 };
 
-const getUserPosition = () => {
+const getUserPosition = async () => {
   return new Promise((resolve, reject) => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
@@ -40,10 +44,11 @@ const getUserPosition = () => {
           if (error.code !== 1) {
             return getUserPosition();
           }
+          reject(new Error("Location permission rejected."));
         },
       );
     } else {
-      reject(new Error("Position Unobtainable"));
+      reject(new Error("Position cannot be retrieved."));
     }
   });
 };

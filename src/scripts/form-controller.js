@@ -13,13 +13,15 @@ formInputs.forEach((input) => {
 
 async function submitLocation(event) {
   event.preventDefault();
-  const location = { city: formInputs[0].value, state: formInputs[1].value };
-  addLocation(location.city, location.state, true);
-  const addressWeatherInfo = processWeatherInfo(
-    await fetchWeatherInfo(location),
-  );
-  console.log(addressWeatherInfo);
-  form.reset();
+  try {
+    const location = { city: formInputs[0].value, state: formInputs[1].value };
+    const weatherInfo = processWeatherInfo(await fetchWeatherInfo(location));
+    addLocation(location.city, location.state, true);
+    console.log(weatherInfo);
+    form.reset();
+  } catch {
+    console.log("Location Not Found");
+  }
 }
 
 function checkErrors(event) {
