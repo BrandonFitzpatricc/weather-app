@@ -18,8 +18,12 @@ const startup = () => {
     );
 
   getUserPosition().then(async (position) => {
-    const location = processUserAddress(await fetchUserAddress(position));
-    console.log(processWeatherInfo(await fetchWeatherInfo(location)));
+    try {
+      const location = processUserAddress(await fetchUserAddress(position));
+      console.log(processWeatherInfo(await fetchWeatherInfo(location)));
+    } catch {
+      console.log("Weather information could not be retrieved for this location.");
+    }
   });
 };
 

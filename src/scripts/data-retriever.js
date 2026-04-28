@@ -4,14 +4,13 @@ const fetchWeatherInfo = async (location) => {
       `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location.city},${location.state}/next6days?key=KGKY4HECU7WY8LDG23LNV232C&include=days,hours&elements=temp,tempmax,tempmin,feelslike,icon,datetime`,
     );
   } catch (error) {
-    // If the request failed due to a server error, the application should attempt
-    // to request the weather info again.
-    if (error.message === "500") {
+    // If the request failed due to a server or network error, rather than an
+    // invalid request, then the application should attempt to request the weather info again.
+    if (error.message !== "400") {
       return fetchWeatherInfo(location);
+    } else {
+      throw new Error("Location not found.", { cause: error });
     }
-    throw new Error("Weather info cannot be retrieved.", {
-      cause: error,
-    });
   }
 };
 
@@ -23,13 +22,10 @@ const fetchUserAddress = async (position) => {
     return await loadJson(
       `https://api.tomtom.com/search/2/reverseGeocode/${position.coords.latitude},${position.coords.longitude}}.json?key=DriIcScbvrUfDbEU1DyR0eyp3J3VjBk6`,
     );
-  } catch (error) {
-    // If the request failed due to a server, the application should attempt
+  } catch {
+    // If the request failed due to a server or network error, the application should attempt
     // to request the user address again.
-    if (error.message === "500" || error.message === "504") {
-      return fetchUserAddress(position);
-    }
-    throw new Error("Address cannot be retrieved.", { cause: error });
+    return fetchUserAddress(position);
   }
 };
 
