@@ -4,14 +4,16 @@ import { storageAvailable, storagePopulated } from "./storage-handler";
 let locations = [new Location("New York", "New York", true)];
 
 const addLocation = (city, state, isOpen) => {
-  if (!locationAlreadyAdded(city, state)) {
+  // There's a possibility that an attempt is made to add a location that has already
+  // been added. This location should be opened, but not added again.
+  const location = locations.find(
+    (location) => location.city === city && location.state === state,
+  );
+  if (!location) {
     if (isOpen) closeOpenLocation();
     locations.push(new Location(city, state, isOpen));
-  } else if (isOpen) {
-    closeOpenLocation();
-    locations.find(
-      (location) => location.city === city && location.state === state,
-    ).isOpen = true;
+  } else {
+    openLocation(location.id);
   }
 };
 
@@ -24,6 +26,11 @@ const deleteLocation = (id) => {
 
 const findLocation = (id) => {
   return locations.find((location) => location.id === id);
+};
+
+const openLocation = (id) => {
+  closeOpenLocation();
+  findLocation(id).isOpen = true;
 };
 
 const getOpenLocation = () => locations.find((location) => location.isOpen);
@@ -51,14 +58,6 @@ const loadLocations = () => {
   }
 };
 
-function locationAlreadyAdded(city, state) {
-  return Boolean(
-    locations.find(
-      (location) => location.city === city && location.state === state,
-    ),
-  );
-}
-
 // This will always run prior to the user opening a new location.
 function closeOpenLocation() {
   const openLocation = getOpenLocation();
@@ -69,6 +68,7 @@ export {
   addLocation,
   deleteLocation,
   findLocation,
+  openLocation,
   getOpenLocation,
   closeOpenLocation,
   getLocations,
