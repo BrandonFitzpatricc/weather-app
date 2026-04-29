@@ -3,8 +3,10 @@ import {
   handleOpenLocationWeatherInfo,
 } from "./data-handler";
 import { handleStartupError } from "./error-handler";
+import { getLocations, loadLocations } from "./location-manager";
 
 const startup = async () => {
+  loadLocations();
   navigator.permissions.query({ name: "geolocation" }).then((result) => {
     if (result.state === "granted") {
       // If the application already has user location permissions on startup, then it should
@@ -33,6 +35,7 @@ const startup = async () => {
         ),
       );
     }
+    console.log(getLocations());
   });
 };
 
