@@ -7,6 +7,11 @@ const addLocation = (city, state, isOpen) => {
   if (!locationAlreadyAdded(city, state)) {
     if (isOpen) closeOpenLocation();
     locations.push(new Location(city, state, isOpen));
+  } else if (isOpen) {
+    closeOpenLocation();
+    locations.find(
+      (location) => location.city === city && location.state === state,
+    ).isOpen = true;
   }
 };
 
