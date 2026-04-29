@@ -31,21 +31,17 @@ const fetchUserAddress = async (position) => {
 
 const getUserPosition = async () => {
   return new Promise((resolve, reject) => {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => resolve(position),
-        (error) => {
-          // If the request failed due to an internal error, the application should attempt
-          // to request the user position again.
-          if (error.code !== 1) {
-            return getUserPosition();
-          }
-          reject(new Error("Location permission rejected."));
-        },
-      );
-    } else {
-      reject(new Error("Position cannot be retrieved."));
-    }
+    navigator.geolocation.getCurrentPosition(
+      (position) => resolve(position),
+      (error) => {
+        // If the request failed due to an internal error, the application should attempt
+        // to request the user position again.
+        if (error.code !== 1) {
+          return getUserPosition();
+        }
+        reject(new Error("Location permission rejected."));
+      },
+    );
   });
 };
 
