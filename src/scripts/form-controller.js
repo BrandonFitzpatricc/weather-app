@@ -1,11 +1,18 @@
 import { fetchWeatherInfo } from "./data-retriever";
 import { processWeatherInfo } from "./data-processor";
 import { addLocation } from "./location-manager";
+import { handleFormSubmissionError } from "./error-handler";
 
 const form = document.querySelector("#new-location-form");
 const formInputs = form.querySelectorAll("input");
 
-form.addEventListener("submit", submitLocation);
+form.addEventListener("submit", (event) =>
+  handleFormSubmissionError(
+    submitLocation,
+    event,
+    () => console.log("Location Not Found"),
+  ),
+);
 
 formInputs.forEach((input) => {
   input.addEventListener("input", checkErrors);
@@ -13,15 +20,11 @@ formInputs.forEach((input) => {
 
 async function submitLocation(event) {
   event.preventDefault();
-  try {
-    const location = { city: formInputs[0].value, state: formInputs[1].value };
-    const weatherInfo = processWeatherInfo(await fetchWeatherInfo(location));
-    addLocation(location.city, location.state, true);
-    console.log(weatherInfo);
-    form.reset();
-  } catch {
-    console.log("Location Not Found");
-  }
+  const location = { city: formInputs[0].value, state: formInputs[1].value };
+  const weatherInfo = processWeatherInfo(await fetchWeatherInfo(location));
+  addLocation(location.city, location.state, true);
+  console.log(weatherInfo);
+  form.reset();
 }
 
 function checkErrors(event) {
