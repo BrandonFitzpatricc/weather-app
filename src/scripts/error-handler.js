@@ -1,6 +1,6 @@
-const handleLoadError = async (loadFn, handleErrorFn) => {
+const handleStartupError = async (handleInfoFn, handleErrorFn) => {
   try {
-    await loadFn();
+    await handleInfoFn();
   } catch {
     handleErrorFn();
   }
@@ -22,4 +22,4 @@ const handleFormSubmissionError = async (submitFn, event, handleErrorFn) => {
   }
 }
 
-export { handleLoadError, handleFetchError, handleFormSubmissionError };
+export { handleStartupError, handleFetchError, handleFormSubmissionError };

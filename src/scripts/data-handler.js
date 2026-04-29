@@ -5,7 +5,7 @@ import {
 } from "./data-retriever";
 import { processWeatherInfo, processUserAddress } from "./data-processor";
 import { getOpenLocation } from "./location-manager";
-import { handleLoadError } from "./error-handler";
+import { handleStartupError } from "./error-handler";
 import { closeOpenLocation } from "./location-manager";
 
 const startup = async () => {
@@ -13,11 +13,11 @@ const startup = async () => {
     if (result.state === "granted") {
       // If the application already has user location permissions on startup, then it should
       // attempt to retrieve and display the weather information for the user's location.
-      handleLoadError(loadUserLocationWeatherInfo, () =>
+      handleStartupError(handleUserLocationWeatherInfo, () =>
         // The weather information for the most recently viewed location (set to NYC on initial
         // startup) will be retrieved and displayed as a fallback if the application fails to
         // retrieve the user's location.
-        handleLoadError(loadOpenLocationWeatherInfo, () =>
+        handleStartupError(handleOpenLocationWeatherInfo, () =>
           console.log("Weather information cannot be retrieved at this time."),
         ),
       );
@@ -25,13 +25,13 @@ const startup = async () => {
       // If the application is either awaiting user location permissions or they have been
       // denied, then it should attempt to retrieve and display the weather information for
       // the most recently viewed location (set to NYC on initial startup).
-      handleLoadError(loadOpenLocationWeatherInfo, () =>
+      handleStartupError(handleOpenLocationWeatherInfo, () =>
         console.log("Weather information cannot be retrieved at this time."),
       );
 
       // Once (or if), the application receives user location permissions, it should attempt
       // to retrieve and display the weather information for the user's location.
-      handleLoadError(loadUserLocationWeatherInfo, () =>
+      handleStartupError(handleUserLocationWeatherInfo, () =>
         console.log(
           "Weather information could not be retrieved for this location.",
         ),
@@ -40,12 +40,12 @@ const startup = async () => {
   });
 };
 
-async function loadOpenLocationWeatherInfo() {
+async function handleOpenLocationWeatherInfo() {
   const weatherInfo = await fetchWeatherInfo(getOpenLocation());
   console.log(processWeatherInfo(weatherInfo, "Celsius"));
 }
 
-async function loadUserLocationWeatherInfo() {
+async function handleUserLocationWeatherInfo() {
   const userPosition = await getUserPosition();
   const userAddress = processUserAddress(await fetchUserAddress(userPosition));
   console.log(processWeatherInfo(await fetchWeatherInfo(userAddress)));
