@@ -2,7 +2,7 @@ import { handleFetchError } from "./error-handler";
 
 const fetchWeatherInfo = async (location) => {
   return handleFetchError(
-    loadJson,
+    fetchJson,
     `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location.city},${location.state}/next6days?key=KGKY4HECU7WY8LDG23LNV232C&include=days,hours&elements=temp,tempmax,tempmin,feelslike,icon,datetime`,
     (error) => {
       // If the request failed due to a server or network error, rather than an
@@ -21,7 +21,7 @@ const fetchWeatherInfo = async (location) => {
 // weather information.
 const fetchUserAddress = async (position) => {
   return handleFetchError(
-    loadJson,
+    fetchJson,
     `https://api.tomtom.com/search/2/reverseGeocode/${position.coords.latitude},${position.coords.longitude}}.json?key=DriIcScbvrUfDbEU1DyR0eyp3J3VjBk6`,
     () => fetchUserAddress(position),
   );
@@ -43,7 +43,7 @@ const getUserPosition = async () => {
   });
 };
 
-async function loadJson(url) {
+async function fetchJson(url) {
   const response = await fetch(url);
   if (response.ok) {
     return response.json();
