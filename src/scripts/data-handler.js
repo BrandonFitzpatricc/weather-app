@@ -7,7 +7,7 @@ import { processWeatherInfo, processUserAddress } from "./data-processor";
 import { getOpenLocation } from "./location-manager";
 
 const handleOpenLocationWeatherInfo = async () => {
-  const weatherInfo = await fetchWeatherInfo(getOpenLocation());
+  let weatherInfo = await fetchWeatherInfo(getOpenLocation());
   console.log(processWeatherInfo(weatherInfo, "Celsius"));
 }
 

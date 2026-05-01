@@ -5,7 +5,7 @@
   </head>
 
   <body>
-    <div class="main-content">
+    <div id="main-content" class="main-content">
       <button id="open-sidebar-btn" class="open-sidebar-btn">
         <img
           class="icon"
@@ -16,16 +16,16 @@
         />
       </button>
 
-      <div class="header">
-        <div class="temp current">80°</div>
+      <div id="header" class="header">
+        <div id="current-temp" class="temp current">80°</div>
         <button id="temp-converter-btn" class="temp-converter-btn">
           Fahrenheit
         </button>
-        <div class="location-name">New York, New York</div>
+        <div id="location-name" class="location-name">New York, New York</div>
         <div class="temp-info">
-          <div class="temp feel-like">Feels like 81°</div>
-          <div class="temp high">High 80°</div>
-          <div class="temp low">Low 55°</div>
+          <div id="feel-like-temp" class="temp feel-like">Feels like 81°</div>
+          <div id="high-temp" class="temp high">High 80°</div>
+          <div id="low-temp" class="temp low">Low 55°</div>
         </div>
 
         <img
@@ -37,7 +37,7 @@
         />
       </div>
 
-      <div class="weather-info hourly">
+      <div id="hourly-weather-info" class="weather-info hourly">
         <div class="entry">
           <div class="time">12 PM</div>
           <img
@@ -51,44 +51,7 @@
         </div>
       </div>
 
-      <div class="weather-info daily">
-        <div class="entry">
-          <div class="week-day">Today</div>
-
-          <div class="sub-info">
-            <img
-              class="icon"
-              src="./icons/weather-icons/rain-percentage.svg"
-              alt="rain drop icon"
-              width="50"
-              height="50"
-            />
-            <div class="rain-percentage">50%</div>
-          </div>
-
-          <div class="sub-info">
-            <img
-              class="icon weather"
-              src="./icons/weather-icons/partly-cloudy-day.svg"
-              alt="partly cloudy day weather icon"
-              width="50"
-              height="50"
-            />
-            <img
-              class="icon weather"
-              src="./icons/weather-icons/clear-night.svg"
-              alt="clear night weather icon"
-              width="50"
-              height="50"
-            />
-          </div>
-
-          <div class="sub-info">
-            <div class="temp high">72°</div>
-            <div class="temp low">48°</div>
-          </div>
-        </div>
-
+      <div id="daily-weather-info" class="weather-info daily">
         <div class="entry">
           <div class="week-day">Today</div>
 
@@ -128,7 +91,7 @@
       </div>
     </div>
 
-    <div class="locations-sidebar hidden">
+    <div id="locations-sidebar" class="locations-sidebar">
       <div class="heading">
         <img
           class="icon"
@@ -138,7 +101,7 @@
           height="65"
         />
         <div class="heading-text">Locations</div>
-        <button id="close-sidebar-btn" class="close-sidebar-btn">
+        <button class="close-sidebar-btn">
           <img
             class="icon"
             src="./icons/input-icons/close-sidebar.svg"
@@ -194,7 +157,7 @@
       </div>
 
       <div class="tab new-location">
-        <button class="new-location-btn">
+        <button class="add-location-btn">
           <img
             class="icon"
             src="./icons/input-icons/add.svg"
@@ -207,7 +170,7 @@
       </div>
     </div>
 
-    <div id="new-location-prompt" class="new-location-prompt">
+    <div id="new-location-prompt" class="new-location-prompt hidden">
       <form id="new-location-form" class="new-location-form">
         <div class="form-title">New Location</div>
 
@@ -223,12 +186,20 @@
 
         <button class="enter-btn" type="submit">Enter</button>
 
-        <div class="error-text hidden">Location Not Found</div>
+        <div id="error-text" class="error-text hidden">Location Not Found</div>
 
         <button id="back-btn" class="back-btn">
-          <img class="icon" src="./icons/input-icons/back.svg" alt="back icon" />
+          <img
+            class="icon"
+            src="./icons/input-icons/back.svg"
+            alt="back icon"
+          />
         </button>
       </form>
+    </div>
+
+    <div id="error-text" class="error-text hidden">
+      Weather information cannot be retrieved at this time.
     </div>
   </body>
 </html>

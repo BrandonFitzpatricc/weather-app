@@ -3,7 +3,7 @@ import { handleFetchError } from "./error-handler";
 const fetchWeatherInfo = async (location) => {
   return handleFetchError(
     fetchJson,
-    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location.city},${location.state}/next6days?key=KGKY4HECU7WY8LDG23LNV232C&include=days,hours&elements=temp,tempmax,tempmin,feelslike,icon,datetime`,
+    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location.city},${location.state}/next6days?key=KGKY4HECU7WY8LDG23LNV232C&include=days,hours&elements=temp,tempmax,tempmin,feelslike,icon,datetime,precipprob`,
     (error) => {
       // If the request failed due to a server or network error, rather than an
       // invalid request, then the application should attempt to request the weather info again.

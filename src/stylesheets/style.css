@@ -21,6 +21,7 @@
     border: none;
     background-color: inherit;
     cursor: pointer;
+    pointer-events: auto;
   }
 
   &.hidden {
@@ -30,6 +31,7 @@
 
 body {
   background-color: var(--blue);
+  pointer-events: none;
   position: relative;
 
   & .main-content {
@@ -80,7 +82,7 @@ body {
         top: 55px;
         left: 160px;
         width: 225px;
-        border: 3px solid #FFFFFF;
+        border: 3px solid #ffffff;
         padding: 1px 15px;
         font-size: 30px;
       }
@@ -144,13 +146,17 @@ body {
               font-size: 23px;
             }
           }
+
+          & .week-day, .week-day + .sub-info {
+            width: 150px;
+          }
         }
       }
     }
   }
 
   & .locations-sidebar {
-    width: max(525px, 30%);
+    width: max(525px, 32%);
     height: 100%;
     background-color: var(--dark-blue);
     opacity: 0.9;
@@ -270,5 +276,13 @@ body {
         left: 15px;
       }
     }
+  }
+
+  & .error-text {
+    font-size: 32px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
