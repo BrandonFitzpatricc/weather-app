@@ -16,7 +16,7 @@ const handleOpenLocationWeatherInfo = async () => {
 const handleUserLocationWeatherInfo = async () => {
   const userPosition = await getUserPosition();
   const userAddress = processUserAddress(await fetchUserAddress(userPosition));
-  const weatherInfo = processWeatherInfo(await fetchWeatherInfo(userAddress), );
+  const weatherInfo = processWeatherInfo(await fetchWeatherInfo(userAddress), "Fahrenheit");
   updateMainContent(weatherInfo, getOpenLocation());
 }
 

@@ -3,7 +3,7 @@ import {
   handleOpenLocationWeatherInfo,
 } from "./data-handler";
 import { handleStartupError } from "./error-handler";
-import { getLocations, loadLocations } from "./location-manager";
+import { loadLocations } from "./location-manager";
 
 const startup = async () => {
   loadLocations();
@@ -35,7 +35,6 @@ const startup = async () => {
         ),
       );
     }
-    console.log(getLocations());
   });
 };
 

@@ -5,16 +5,16 @@ const modifyTemps = (dailyWeatherInfo, modifyFn) => {
     if (isTempInfo(dailyWeatherInfo[infoType])) {
       dailyWeatherInfo[infoType] = modifyFn(dailyWeatherInfo[infoType]);
     }
-    const hours = dailyWeatherInfo.hours;
-    hours.forEach((hourlyWeatherInfo) => {
-      for (const infoType in hourlyWeatherInfo) {
-        if (isTempInfo(hourlyWeatherInfo[infoType])) {
-          console.log(hourlyWeatherInfo[infoType])
-          hourlyWeatherInfo[infoType] = modifyFn(hourlyWeatherInfo[infoType]);
-        }
-      }
-    });
   }
+
+  const hours = dailyWeatherInfo.hours;
+  hours.forEach((hourlyWeatherInfo) => {
+    for (const infoType in hourlyWeatherInfo) {
+      if (isTempInfo(hourlyWeatherInfo[infoType])) {
+        hourlyWeatherInfo[infoType] = modifyFn(hourlyWeatherInfo[infoType]);
+      }
+    }
+  });
 };
 
 // Any info type whose value is a number will always be temperature info
