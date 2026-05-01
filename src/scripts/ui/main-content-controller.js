@@ -3,6 +3,10 @@ import {
   createDailyWeatherInfoEntry,
   createHourlyWeatherInfoEntry,
 } from "./element-factory";
+import {
+  toggleLocationsSidebar,
+  updateLocationsSidebar,
+} from "./location-sidebar-controller";
 
 const mainContent = document.querySelector("#main-content");
 
@@ -20,6 +24,19 @@ const toggleMainContent = (toggleStatus) => {
       ? "main-content"
       : "main-content hidden";
 };
+
+mainContent.addEventListener("click", (event) => {
+  const selectedButton = event.target;
+  
+  const buttonHandler = {
+    "open-sidebar-btn": () => {
+      updateLocationsSidebar();
+      toggleLocationsSidebar();
+    },
+  };
+
+  buttonHandler[selectedButton.id]();
+});
 
 function updateHeader(dailyWeatherInfo, location) {
   const header = document.querySelector("#header");
