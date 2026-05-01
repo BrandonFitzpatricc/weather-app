@@ -8,16 +8,21 @@ import { getOpenLocation } from "./location-manager";
 import { updateMainContent } from "./main-content-controller";
 
 const handleOpenLocationWeatherInfo = async () => {
-  let weatherInfo = await fetchWeatherInfo(getOpenLocation());
-  weatherInfo = processWeatherInfo(weatherInfo, "Celsius");
-  updateMainContent(weatherInfo, getOpenLocation());
-}
+  const openLocation = getOpenLocation();
+  const weatherInfo = processWeatherInfo(
+    await fetchWeatherInfo(openLocation, "Celsius"),
+  );
+  updateMainContent(weatherInfo, openLocation);
+};
 
 const handleUserLocationWeatherInfo = async () => {
   const userPosition = await getUserPosition();
   const userAddress = processUserAddress(await fetchUserAddress(userPosition));
-  const weatherInfo = processWeatherInfo(await fetchWeatherInfo(userAddress), "Fahrenheit");
+  const weatherInfo = processWeatherInfo(
+    await fetchWeatherInfo(userAddress),
+    "Celsius",
+  );
   updateMainContent(weatherInfo, getOpenLocation());
-}
+};
 
 export { handleOpenLocationWeatherInfo, handleUserLocationWeatherInfo };

@@ -20,7 +20,6 @@ const modifyTemps = (dailyWeatherInfo, modifyFn) => {
 // Any info type whose value is a number will always be temperature info, EXCEPT
 // precipitation probability.
 function isTempInfo(infoType, infoTypeName) {
-  console.log(infoType);
   return !isNaN(infoType) && infoTypeName !== "precipprob";
 }
 
