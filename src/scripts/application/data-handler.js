@@ -13,7 +13,7 @@ const handleOpenLocationWeatherInfo = async () => {
     await fetchWeatherInfo(openLocation, "Celsius"),
   );
   updateMainContent(weatherInfo, openLocation);
-  toggleMainContent();
+  toggleMainContent("visible");
 };
 
 const handleUserLocationWeatherInfo = async () => {
@@ -24,7 +24,7 @@ const handleUserLocationWeatherInfo = async () => {
     "Celsius",
   );
   updateMainContent(weatherInfo, getOpenLocation());
-  toggleMainContent();
+  toggleMainContent("visible");
 };
 
 export { handleOpenLocationWeatherInfo, handleUserLocationWeatherInfo };

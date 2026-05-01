@@ -12,10 +12,13 @@ const updateMainContent = (days, location) => {
   updateDailyWeatherInfo(days);
 };
 
-const toggleMainContent = () => {
-  mainContent.className = mainContent.className.includes("hidden")
-    ? "main-content"
-    : "main-content hidden";
+// toggleStatus is an optional parameter to strictly toggle main content to be visible
+// or not. Otherwise, it will simply switch its current toggle status.
+const toggleMainContent = (toggleStatus) => {
+  mainContent.className =
+    mainContent.className.includes("hidden") || toggleStatus === "visible"
+      ? "main-content"
+      : "main-content hidden";
 };
 
 function updateHeader(dailyWeatherInfo, location) {
