@@ -30,14 +30,14 @@ function updateHeader(dailyWeatherInfo, location) {
 function updateHourlyWeatherInfo(hours) {
   const hourlyWeatherInfo = document.querySelector("#hourly-weather-info");
   hours.forEach((weatherInfo) =>
-    hourlyWeatherInfo.append(createHourlyWeatherInfoEntry(weatherInfo)),
+    hourlyWeatherInfo.appendChild(createHourlyWeatherInfoEntry(weatherInfo)),
   );
 }
 
 function updateDailyWeatherInfo(days) {
   const dailyWeatherInfo = document.querySelector("#daily-weather-info");
   days.forEach((weatherInfo) =>
-    dailyWeatherInfo.append(createDailyWeatherInfoEntry(weatherInfo)),
+    dailyWeatherInfo.appendChild(createDailyWeatherInfoEntry(weatherInfo)),
   );
 }
 
