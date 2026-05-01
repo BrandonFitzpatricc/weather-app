@@ -29,6 +29,8 @@ const createHourlyWeatherInfoEntry = (hourlyWeatherInfo) => {
 
 const createDailyWeatherInfoEntry = (dailyWeatherInfo) => {
   const entry = createElement("div", "", new Attribute("class", "entry"));
+  // Time is hard coded to prevent a bug where the weekday is incorrectly
+  // set to the day before the specified date.
   const date = new Date(`${dailyWeatherInfo.datetime}T00:00:00`);
   const weekDay = createElement(
     "div",
