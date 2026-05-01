@@ -1,7 +1,7 @@
-import { fetchWeatherInfo } from "./data-retriever";
-import { processWeatherInfo } from "./data-processor";
-import { addLocation } from "./location-manager";
-import { handleFormSubmissionError } from "./error-handler";
+import { fetchWeatherInfo } from "../application/data-retriever";
+import { processWeatherInfo } from "../application/data-processor";
+import { addLocation } from "../application/location-manager";
+import { handleFormSubmissionError } from "../utilities/error-handler";
 
 const form = document.querySelector("#new-location-form");
 const formInputs = form.querySelectorAll("input");

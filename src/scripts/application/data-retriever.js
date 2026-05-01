@@ -1,4 +1,4 @@
-import { handleFetchError } from "./error-handler";
+import { handleFetchError } from "../utilities/error-handler";
 
 const fetchWeatherInfo = async (location) => {
   return handleFetchError(

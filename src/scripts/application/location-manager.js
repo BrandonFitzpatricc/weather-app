@@ -1,5 +1,5 @@
 import { Location } from "./location";
-import { storageAvailable, storagePopulated } from "./storage-handler";
+import { storageAvailable, storagePopulated } from "../utilities/storage-handler";
 
 let locations = [new Location("New York", "New York", true)];
 

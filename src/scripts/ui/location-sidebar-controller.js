@@ -1,4 +1,4 @@
-import { getLocations } from "./location-manager";
+import { getLocations } from "../application/location-manager";
 import { createLocationTab } from "./element-factory";
 
 const locationsSidebar = document.querySelector("#locations-sidebar");

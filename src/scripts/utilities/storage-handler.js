@@ -1,4 +1,4 @@
-import { saveLocations } from "./location-manager";
+import { saveLocations } from "../application/location-manager";
 
 const storageAvailable = (type) => {
     let storage;

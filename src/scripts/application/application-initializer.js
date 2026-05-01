@@ -2,7 +2,7 @@ import {
   handleUserLocationWeatherInfo,
   handleOpenLocationWeatherInfo,
 } from "./data-handler";
-import { handleStartupError } from "./error-handler";
+import { handleStartupError } from "../utilities/error-handler";
 import { loadLocations } from "./location-manager";
 
 const startup = async () => {

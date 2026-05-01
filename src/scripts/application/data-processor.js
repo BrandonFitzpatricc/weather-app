@@ -1,6 +1,6 @@
 import { addLocation } from "./location-manager";
-import { convertToFahrenheit } from "./temp-converter";
-import { modifyTemps } from "./temp-modifier";
+import { convertToFahrenheit } from "../utilities/temp-converter";
+import { modifyTemps } from "../utilities/temp-modifier";
 
 const processWeatherInfo = (weatherInfo, tempScale) => {
   const days = weatherInfo.days;

@@ -5,7 +5,7 @@ import {
 } from "./data-retriever";
 import { processWeatherInfo, processUserAddress } from "./data-processor";
 import { getOpenLocation } from "./location-manager";
-import { updateMainContent } from "./main-content-controller";
+import { updateMainContent } from "../ui/main-content-controller";
 
 const handleOpenLocationWeatherInfo = async () => {
   const openLocation = getOpenLocation();
