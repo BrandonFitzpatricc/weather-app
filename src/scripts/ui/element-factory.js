@@ -113,6 +113,13 @@ const createLocationTab = (location) => {
   return locationTab;
 };
 
+const createErrorMessage = () =>
+  createElement(
+    "div",
+    "Weather information cannot be retrieved at this time.",
+    new Attribute("class", "error-message"),
+  );
+
 function createIcon(className, src, alt, dimensions) {
   return createElement(
     "img",
@@ -162,4 +169,5 @@ export {
   createHourlyWeatherInfoEntry,
   createDailyWeatherInfoEntry,
   createLocationTab,
+  createErrorMessage,
 };

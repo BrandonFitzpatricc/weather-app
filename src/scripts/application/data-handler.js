@@ -5,7 +5,7 @@ import {
 } from "./data-retriever";
 import { processWeatherInfo, processUserAddress } from "./data-processor";
 import { getOpenLocation } from "./location-manager";
-import { updateMainContent } from "../ui/main-content-controller";
+import { updateMainContent, toggleMainContent } from "../ui/main-content-controller";
 
 const handleOpenLocationWeatherInfo = async () => {
   const openLocation = getOpenLocation();
@@ -13,6 +13,7 @@ const handleOpenLocationWeatherInfo = async () => {
     await fetchWeatherInfo(openLocation, "Celsius"),
   );
   updateMainContent(weatherInfo, openLocation);
+  toggleMainContent();
 };
 
 const handleUserLocationWeatherInfo = async () => {
@@ -23,6 +24,7 @@ const handleUserLocationWeatherInfo = async () => {
     "Celsius",
   );
   updateMainContent(weatherInfo, getOpenLocation());
+  toggleMainContent();
 };
 
 export { handleOpenLocationWeatherInfo, handleUserLocationWeatherInfo };

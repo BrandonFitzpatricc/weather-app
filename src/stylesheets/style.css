@@ -264,7 +264,7 @@ body {
         padding: 5px;
       }
 
-      & .error-text {
+      & .error-message {
         margin-top: 20px;
         font-size: 30px;
       }
@@ -278,7 +278,7 @@ body {
     }
   }
 
-  & .error-text {
+  & .error-message {
     font-size: 32px;
     position: absolute;
     top: 50%;

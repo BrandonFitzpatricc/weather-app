@@ -4,10 +4,18 @@ import {
   createHourlyWeatherInfoEntry,
 } from "./element-factory";
 
+const mainContent = document.querySelector("#main-content");
+
 const updateMainContent = (days, location) => {
   updateHeader(days[0], location);
   updateHourlyWeatherInfo(days[0].hours);
   updateDailyWeatherInfo(days);
+};
+
+const toggleMainContent = () => {
+  mainContent.className = mainContent.className.includes("hidden")
+    ? "main-content"
+    : "main-content hidden";
 };
 
 function updateHeader(dailyWeatherInfo, location) {
@@ -43,4 +51,4 @@ function updateDailyWeatherInfo(days) {
   );
 }
 
-export { updateMainContent };
+export { updateMainContent, toggleMainContent };
