@@ -29,6 +29,7 @@ function updateHeader(dailyWeatherInfo, location) {
 
 function updateHourlyWeatherInfo(hours) {
   const hourlyWeatherInfo = document.querySelector("#hourly-weather-info");
+  hourlyWeatherInfo.textContent = "";
   hours.forEach((weatherInfo) =>
     hourlyWeatherInfo.appendChild(createHourlyWeatherInfoEntry(weatherInfo)),
   );
@@ -36,6 +37,7 @@ function updateHourlyWeatherInfo(hours) {
 
 function updateDailyWeatherInfo(days) {
   const dailyWeatherInfo = document.querySelector("#daily-weather-info");
+  dailyWeatherInfo.textContent = "";
   days.forEach((weatherInfo) =>
     dailyWeatherInfo.appendChild(createDailyWeatherInfoEntry(weatherInfo)),
   );
