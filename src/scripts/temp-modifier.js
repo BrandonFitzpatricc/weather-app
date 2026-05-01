@@ -2,7 +2,7 @@
 // or a function that rounds temperatures to whole numbers.
 const modifyTemps = (dailyWeatherInfo, modifyFn) => {
   for (const infoType in dailyWeatherInfo) {
-    if (isTempInfo(dailyWeatherInfo[infoType])) {
+    if (isTempInfo(dailyWeatherInfo[infoType], infoType)) {
       dailyWeatherInfo[infoType] = modifyFn(dailyWeatherInfo[infoType]);
     }
   }
@@ -10,16 +10,18 @@ const modifyTemps = (dailyWeatherInfo, modifyFn) => {
   const hours = dailyWeatherInfo.hours;
   hours.forEach((hourlyWeatherInfo) => {
     for (const infoType in hourlyWeatherInfo) {
-      if (isTempInfo(hourlyWeatherInfo[infoType])) {
+      if (isTempInfo(hourlyWeatherInfo[infoType], infoType)) {
         hourlyWeatherInfo[infoType] = modifyFn(hourlyWeatherInfo[infoType]);
       }
     }
   });
 };
 
-// Any info type whose value is a number will always be temperature info
-function isTempInfo(infoType) {
-  return !isNaN(infoType);
+// Any info type whose value is a number will always be temperature info, EXCEPT
+// precipitation probability.
+function isTempInfo(infoType, infoTypeName) {
+  console.log(infoType);
+  return !isNaN(infoType) && infoTypeName !== "precipprob";
 }
 
 export { modifyTemps };
