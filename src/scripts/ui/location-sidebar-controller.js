@@ -2,7 +2,7 @@ import { getLocations } from "../application/location-manager";
 import { createLocationTab } from "./element-factory";
 import { deleteLocation, openLocation } from "../application/location-manager";
 import { handleOpenLocationWeatherInfo } from "../application/data-handler";
-import { openForm } from "./form-controller";
+import { toggleForm } from "./form-controller";
 
 const locationsSidebar = document.querySelector("#locations-sidebar");
 const newLocationTab = document.querySelector("#new-location-tab");
@@ -39,7 +39,7 @@ locationsSidebar.addEventListener("click", (event) => {
     },
     "add-location-btn": () => {
       toggleLocationsSidebar();
-      openForm();
+      toggleForm();
     },
   };
 

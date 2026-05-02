@@ -9,7 +9,11 @@ const form = document.querySelector("#new-location-form");
 const formInputs = form.querySelectorAll("input");
 const errorMessage = document.querySelector("#error-message");
 
-const openForm = () => prompt.className = "new-location-prompt";
+const toggleForm = () => {
+  prompt.className = prompt.className.includes("hidden")
+    ? "new-location-prompt"
+    : "new-location-prompt hidden";
+};
 
 form.addEventListener("submit", (event) =>
   handleFormSubmissionError(
@@ -22,6 +26,8 @@ form.addEventListener("submit", (event) =>
 formInputs.forEach((input) => {
   input.addEventListener("input", checkErrors);
 });
+
+form.querySelector("#back-btn").addEventListener("click", toggleForm);
 
 async function submitLocation(event) {
   event.preventDefault();
@@ -46,4 +52,4 @@ function checkErrors(event) {
   }
 }
 
-export { openForm };
+export { toggleForm };
