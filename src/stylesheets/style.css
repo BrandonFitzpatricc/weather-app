@@ -101,7 +101,7 @@ body {
       &.hourly {
         margin-bottom: 35px;
         display: flex;
-        gap: 40px;
+        gap: 28px;
         overflow: scroll;
 
         & .entry {
@@ -118,6 +118,17 @@ body {
 
           & .temp {
             font-size: 22px;
+          }
+
+          & .rain-percentage {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            width: 72px;
+
+            & > .icon {
+              width: 30px;
+            }
           }
         }
       }

@@ -23,7 +23,25 @@ const createHourlyWeatherInfoEntry = (hourlyWeatherInfo) => {
     `${hourlyWeatherInfo.temp}°`,
     new Attribute("class", "temp"),
   );
-  entry.append(time, weatherIcon, temp);
+  const rainPercentage = createElement(
+    "div",
+    "",
+    new Attribute("class", "rain-percentage"),
+  );
+  rainPercentage.append(
+    createIcon(
+      "icon",
+      weatherIcons["rain-percentage"],
+      "rain percentage icon",
+      30,
+    ),
+    createElement(
+      "div",
+      `${hourlyWeatherInfo.precipprob}%`,
+      new Attribute("class", "text"),
+    ),
+  );
+  entry.append(time, weatherIcon, temp, rainPercentage);
   return entry;
 };
 
@@ -44,9 +62,9 @@ const createDailyWeatherInfoEntry = (dailyWeatherInfo) => {
   const subInfo = [
     createSubInfo(
       createIcon(
-        "icon weather",
+        "icon",
         weatherIcons["rain-percentage"],
-        dailyWeatherInfo.icon,
+        "rain percentage icon",
         50,
       ),
       createElement(

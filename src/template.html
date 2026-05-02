@@ -5,7 +5,7 @@
   </head>
 
   <body>
-    <div id="main-content" class="main-content hidden">
+    <div id="main-content" class="main-content">
       <button id="open-sidebar-btn" class="open-sidebar-btn">
         <img
           class="icon"
@@ -28,21 +28,14 @@
           <div id="low-temp" class="temp low"></div>
         </div>
 
-        <img
-          id="weather-icon"
-          class="icon weather"
-          width="250"
-          height="250"
-        />
+        <img id="weather-icon" class="icon weather" width="250" height="250" />
       </div>
 
       <div id="hourly-weather-info" class="weather-info hourly">
-
+        
       </div>
 
-      <div id="daily-weather-info" class="weather-info daily">
-
-      </div>
+      <div id="daily-weather-info" class="weather-info daily"></div>
     </div>
 
     <div id="locations-sidebar" class="locations-sidebar hidden">
@@ -96,7 +89,9 @@
 
         <button class="enter-btn" type="submit">Enter</button>
 
-        <div id="error-message" class="error-message hidden">Location Not Found</div>
+        <div id="error-message" class="error-message hidden">
+          Location Not Found
+        </div>
 
         <button type="button" id="back-btn" class="back-btn">
           <img
