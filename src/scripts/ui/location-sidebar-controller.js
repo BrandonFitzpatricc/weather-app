@@ -1,6 +1,10 @@
 import { getLocations } from "../application/location-manager";
 import { createLocationTab } from "./element-factory";
-import { deleteLocation, openLocation } from "../application/location-manager";
+import {
+  deleteLocation,
+  openLocation,
+  atMaxLocations,
+} from "../application/location-manager";
 import { handleOpenLocationWeatherInfo } from "../application/data-handler";
 import { toggleForm } from "./form-controller";
 
@@ -15,6 +19,12 @@ const updateLocationsSidebar = () => {
   getLocations().forEach((location) =>
     locationsSidebar.insertBefore(createLocationTab(location), newLocationTab),
   );
+
+  if (atMaxLocations()) {
+    newLocationTab.className = "tab new-location hidden";
+  } else {
+    newLocationTab.className = "tab new-location";
+  }
 };
 
 const toggleLocationsSidebar = () => {
