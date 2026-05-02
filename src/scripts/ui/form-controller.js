@@ -4,9 +4,12 @@ import { addLocation } from "../application/location-manager";
 import { handleFormSubmissionError } from "../utilities/error-handler";
 import { updateMainContent } from "./main-content-controller";
 
+const prompt = document.querySelector("#new-location-prompt");
 const form = document.querySelector("#new-location-form");
 const formInputs = form.querySelectorAll("input");
 const errorMessage = document.querySelector("#error-message");
+
+const openForm = () => prompt.className = "new-location-prompt";
 
 form.addEventListener("submit", (event) =>
   handleFormSubmissionError(
@@ -26,8 +29,7 @@ async function submitLocation(event) {
   const weatherInfo = processWeatherInfo(await fetchWeatherInfo(location));
   addLocation(location.city, location.state, true);
   updateMainContent(weatherInfo, location);
-  document.querySelector("#new-location-prompt").className =
-    "new-location-prompt hidden";
+  prompt.className = "new-location-prompt hidden";
   form.reset();
 }
 
@@ -44,5 +46,4 @@ function checkErrors(event) {
   }
 }
 
-// Temporary export to ensure the form controller is detected as a dependency.
-export { checkErrors };
+export { openForm };

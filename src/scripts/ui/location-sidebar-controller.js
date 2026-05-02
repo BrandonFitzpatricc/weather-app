@@ -1,5 +1,8 @@
 import { getLocations } from "../application/location-manager";
 import { createLocationTab } from "./element-factory";
+import { deleteLocation, openLocation } from "../application/location-manager";
+import { handleOpenLocationWeatherInfo } from "../application/data-handler";
+import { openForm } from "./form-controller";
 
 const locationsSidebar = document.querySelector("#locations-sidebar");
 const newLocationTab = document.querySelector("#new-location-tab");
@@ -24,8 +27,19 @@ locationsSidebar.addEventListener("click", (event) => {
   const selectedButton = event.target;
 
   const buttonHandler = {
-    "close-sidebar-btn": () => {
+    "close-sidebar-btn": toggleLocationsSidebar,
+    "location-btn": () => {
+      openLocation(selectedButton.parentElement.dataset.id);
+      handleOpenLocationWeatherInfo();
       toggleLocationsSidebar();
+    },
+    "delete-location-btn": () => {
+      deleteLocation(selectedButton.parentElement.dataset.id);
+      updateLocationsSidebar();
+    },
+    "add-location-btn": () => {
+      toggleLocationsSidebar();
+      openForm();
     },
   };
 

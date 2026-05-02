@@ -3,7 +3,4 @@ import "../stylesheets/style.css";
 
 import { startup } from "./application/application-initializer";
 
-// Temporary import to ensure the form controller is detected as a dependency.
-import { checkErrors } from "./ui/form-controller";
-
 startup();

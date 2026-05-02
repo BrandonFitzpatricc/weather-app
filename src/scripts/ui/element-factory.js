@@ -83,7 +83,8 @@ const createLocationTab = (location) => {
   const locationTab = createElement(
     "div",
     "",
-    new Attribute("class", `tab location ${location.isOpen ? "selected" : ""}`),
+    new Attribute("class", `tab location${location.isOpen ? " selected" : ""}`),
+    new Attribute("data-id", location.id),
   );
 
   const locationBtn = createElement(

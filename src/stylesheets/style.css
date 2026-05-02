@@ -10,12 +10,12 @@
 * {
   font-weight: bold;
   color: var(--text-color);
+  pointer-events: none;
 
   & .icon {
     filter: invert(96%) sepia(4%) saturate(16%) hue-rotate(168deg)
       brightness(104%) contrast(107%);
     height: auto;
-    pointer-events: none;
   }
 
   & button {
@@ -32,7 +32,6 @@
 
 body {
   background-color: var(--blue);
-  pointer-events: none;
   position: relative;
 
   & .main-content {
