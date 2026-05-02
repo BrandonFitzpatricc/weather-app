@@ -16,18 +16,20 @@ const toggleForm = () => {
 };
 
 form.addEventListener("submit", (event) =>
-  handleFormSubmissionError(
-    submitLocation,
-    event,
-    () => (errorMessage.className = "error-message"),
+  handleFormSubmissionError(submitLocation, event, () =>
+    toggleErrorMessage("visible"),
   ),
 );
 
 formInputs.forEach((input) => {
-  input.addEventListener("input", checkErrors);
+  input.addEventListener("input", checkValidity);
 });
 
-form.querySelector("#back-btn").addEventListener("click", toggleForm);
+form.querySelector("#back-btn").addEventListener("click", () => {
+  toggleErrorMessage("not visible");
+  form.reset();
+  toggleForm();
+});
 
 async function submitLocation(event) {
   event.preventDefault();
@@ -36,10 +38,11 @@ async function submitLocation(event) {
   addLocation(location.city, location.state, true);
   updateMainContent(weatherInfo, location);
   prompt.className = "new-location-prompt hidden";
+  toggleErrorMessage("not visible");
   form.reset();
 }
 
-function checkErrors(event) {
+function checkValidity(event) {
   const input = event.target;
   if (input.validity.patternMismatch) {
     input.setCustomValidity(
@@ -50,6 +53,12 @@ function checkErrors(event) {
   } else {
     input.setCustomValidity("");
   }
+}
+
+// toggleStatus is a parameter to strictly toggle the error message to be visible or not.
+function toggleErrorMessage(toggleStatus) {
+  errorMessage.className =
+    toggleStatus === "visible" ? "error-message" : "error-message hidden";
 }
 
 export { toggleForm };
