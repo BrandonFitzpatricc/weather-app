@@ -148,7 +148,8 @@ body {
             }
           }
 
-          & .week-day, .week-day + .sub-info {
+          & .week-day,
+          .week-day + .sub-info {
             width: 150px;
           }
         }
@@ -239,6 +240,7 @@ body {
         input {
           display: block;
           width: 100%;
+          pointer-events: auto;
         }
 
         & label {
@@ -279,7 +281,7 @@ body {
     }
   }
 
-  & .error-message {
+  & > .error-message {
     font-size: 32px;
     position: absolute;
     top: 50%;
