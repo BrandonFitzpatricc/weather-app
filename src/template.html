@@ -5,7 +5,7 @@
   </head>
 
   <body>
-    <div id="main-content" class="main-content">
+    <div id="main-content" class="main-content hidden">
       <button id="open-sidebar-btn" class="open-sidebar-btn">
         <img
           class="icon"
@@ -19,7 +19,7 @@
       <div id="header" class="header">
         <div id="current-temp" class="temp current"></div>
         <button id="temp-converter-btn" class="temp-converter-btn">
-          Fahrenheit
+          Celsius
         </button>
         <div id="location-name" class="location-name"></div>
         <div class="temp-info">
@@ -31,9 +31,7 @@
         <img id="weather-icon" class="icon weather" width="250" height="250" />
       </div>
 
-      <div id="hourly-weather-info" class="weather-info hourly">
-        
-      </div>
+      <div id="hourly-weather-info" class="weather-info hourly"></div>
 
       <div id="daily-weather-info" class="weather-info daily"></div>
     </div>
@@ -100,7 +98,11 @@
             alt="back icon"
           />
         </button>
+
+        <div class="loader hidden"></div>
       </form>
     </div>
+
+    <div id="loader" class="loader hidden"></div>
   </body>
 </html>

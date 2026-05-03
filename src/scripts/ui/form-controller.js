@@ -3,11 +3,11 @@ import { processWeatherInfo } from "../application/data-processor";
 import { addLocation } from "../application/location-manager";
 import { handleFormSubmissionError } from "../utilities/error-handler";
 import { updateMainContent } from "./main-content-controller";
+import { toggleLoader } from "./load-display-handler";
 
 const prompt = document.querySelector("#new-location-prompt");
 const form = document.querySelector("#new-location-form");
 const formInputs = form.querySelectorAll("input");
-const errorMessage = document.querySelector("#error-message");
 
 const toggleForm = () => {
   prompt.className = prompt.className.includes("hidden")
@@ -33,8 +33,10 @@ form.querySelector("#back-btn").addEventListener("click", () => {
 
 async function submitLocation(event) {
   event.preventDefault();
+  toggleLoader("#new-location-form .loader");
   const location = { city: formInputs[0].value, state: formInputs[1].value };
   const weatherInfo = processWeatherInfo(await fetchWeatherInfo(location));
+  toggleLoader("#new-location-form .loader");
   addLocation(location.city, location.state, true);
   updateMainContent(weatherInfo, location);
   prompt.className = "new-location-prompt hidden";
@@ -57,7 +59,7 @@ function checkValidity(event) {
 
 // toggleStatus is a parameter to strictly toggle the error message to be visible or not.
 function toggleErrorMessage(toggleStatus) {
-  errorMessage.className =
+  document.querySelector("#error-message").className =
     toggleStatus === "visible" ? "error-message" : "error-message hidden";
 }
 
