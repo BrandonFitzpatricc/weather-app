@@ -33,10 +33,10 @@ form.querySelector("#back-btn").addEventListener("click", () => {
 
 async function submitLocation(event) {
   event.preventDefault();
-  toggleLoader("#new-location-form .loader");
+  toggleLoader("#new-location-form .loader", "visible");
   const location = { city: formInputs[0].value, state: formInputs[1].value };
   const weatherInfo = processWeatherInfo(await fetchWeatherInfo(location));
-  toggleLoader("#new-location-form .loader");
+  toggleLoader("#new-location-form .loader", "not visible");
   addLocation(location.city, location.state, true);
   updateMainContent(weatherInfo, location);
   prompt.className = "new-location-prompt hidden";

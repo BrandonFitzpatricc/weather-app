@@ -1,5 +1,5 @@
 import { Location } from "./location";
-import { storageAvailable, storagePopulated } from "../utilities/storage-handler";
+import { storageAvailable } from "../utilities/storage-handler";
 
 let locations = [new Location("New York", "New York", true)];
 
@@ -33,7 +33,15 @@ const openLocation = (id) => {
   findLocation(id).isOpen = true;
 };
 
-const getOpenLocation = () => locations.find((location) => location.isOpen);
+const getOpenLocation = () => {
+  let openLocation = locations.find((location) => location.isOpen);
+  // The first location in the list should be opened if no other location is currently open.
+  if (!openLocation && locations.length !== 0) {
+    openLocation = locations[0];
+    openLocation.isOpen = true;
+  }
+  return openLocation;
+};
 
 // The output of this function will be read by the locations sidebar controller and used for
 // creating location tabs
@@ -49,9 +57,11 @@ const saveLocations = () => {
 };
 
 const loadLocations = () => {
-  if (storagePopulated()) {
+  const savedLocations = JSON.parse(localStorage.getItem("locations"));
+  // console.log(savedLocations);
+  if (savedLocations && savedLocations.length !== 0) {
     locations = [];
-    JSON.parse(localStorage.getItem("locations")).forEach((location) => {
+    savedLocations.forEach((location) => {
       location = JSON.parse(location);
       addLocation(location.city, location.state, location.isOpen);
     });

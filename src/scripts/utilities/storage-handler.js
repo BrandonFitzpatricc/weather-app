@@ -19,10 +19,6 @@ const storageAvailable = (type) => {
     }
 }
 
-const storagePopulated = () => {
-    return localStorage.length > 0;
-}
-
 window.addEventListener("unload", () => saveLocations())
 
-export { storageAvailable, storagePopulated };
+export { storageAvailable };

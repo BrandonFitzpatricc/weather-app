@@ -9,19 +9,19 @@ import { updateMainContent, toggleMainContent } from "../ui/main-content-control
 import { toggleLoader } from "../ui/load-display-handler";
 
 const handleOpenLocationWeatherInfo = async () => {
-  toggleLoader("#loader");
+  toggleLoader("#loader", "visible");
   const openLocation = getOpenLocation();
   const weatherInfo = processWeatherInfo(
     await fetchWeatherInfo(openLocation, "Celsius"),
   );
-  toggleLoader("#loader");
+  toggleLoader("#loader", "not visible");
   updateMainContent(weatherInfo, openLocation);
   toggleMainContent("visible");
 };
 
 const handleUserLocationWeatherInfo = async () => {
-  toggleLoader("#loader");
   const userPosition = await getUserPosition();
+  toggleLoader("#loader", "visible");
   const userAddress = processUserAddress(await fetchUserAddress(userPosition));
   const weatherInfo = processWeatherInfo(
     await fetchWeatherInfo(userAddress),
@@ -29,7 +29,7 @@ const handleUserLocationWeatherInfo = async () => {
   );
   toggleLoader("#loader");
   updateMainContent(weatherInfo, getOpenLocation());
-  toggleMainContent("visible");
+  toggleMainContent("visible", "not visible");
 };
 
 export { handleOpenLocationWeatherInfo, handleUserLocationWeatherInfo };
