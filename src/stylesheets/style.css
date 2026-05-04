@@ -33,7 +33,7 @@
 .loader {
   width: 35px;
   aspect-ratio: 1;
-  --_g: no-repeat radial-gradient(farthest-side, #FFF 94%, #0000);
+  --_g: no-repeat radial-gradient(farthest-side, #fff 94%, #0000);
   background:
     var(--_g) 0 0,
     var(--_g) 100% 0,
@@ -114,7 +114,7 @@ body {
     }
 
     & .weather-info {
-      width: max(850px, 85%);
+      width: max(830px, 85%);
       background-color: var(--light-blue);
       border-radius: 15px;
       padding: 15px 30px;
@@ -128,6 +128,21 @@ body {
         display: flex;
         gap: 28px;
         overflow: scroll;
+
+        & .scroll-btn {
+          border-radius: 25px;
+          position: absolute;
+          opacity: 0.4;
+          margin-top: 50px;
+
+          &.left {
+            left: 8%;
+          }
+
+          &.right {
+            right: 8%;
+          }
+        }
 
         & .entry {
           display: flex;

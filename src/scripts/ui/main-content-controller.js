@@ -9,6 +9,7 @@ import {
 } from "./location-sidebar-controller";
 
 const mainContent = document.querySelector("#main-content");
+const hourlyWeatherInfo = document.querySelector("#hourly-weather-info");
 
 const updateMainContent = (days, location) => {
   updateHeader(days[0], location);
@@ -27,11 +28,20 @@ const toggleMainContent = (toggleStatus) => {
 
 mainContent.addEventListener("click", (event) => {
   const selectedButton = event.target;
-  
+
   const buttonHandler = {
     "open-sidebar-btn": () => {
       updateLocationsSidebar();
       toggleLocationsSidebar();
+    },
+    "scroll-left-btn": () => {
+      hourlyWeatherInfo.scrollLeft -= 100;
+      checkScrollConstraints();
+    },
+    "scroll-right-btn": () => {
+      hourlyWeatherInfo.scrollLeft += 100;
+      console.log(hourlyWeatherInfo.scrollLeft);
+      checkScrollConstraints();
     },
   };
 
@@ -57,7 +67,11 @@ function updateHeader(dailyWeatherInfo, location) {
 
 function updateHourlyWeatherInfo(hours) {
   const hourlyWeatherInfo = document.querySelector("#hourly-weather-info");
-  hourlyWeatherInfo.textContent = "";
+
+  hourlyWeatherInfo.querySelectorAll(".entry").forEach((entry) => {
+    hourlyWeatherInfo.removeChild(entry);
+  });
+
   hours.forEach((weatherInfo) =>
     hourlyWeatherInfo.appendChild(createHourlyWeatherInfoEntry(weatherInfo)),
   );
@@ -69,6 +83,29 @@ function updateDailyWeatherInfo(days) {
   days.forEach((weatherInfo) =>
     dailyWeatherInfo.appendChild(createDailyWeatherInfoEntry(weatherInfo)),
   );
+}
+
+function checkScrollConstraints() {
+  checkLeftScrollConstraints();
+  checkRightScrollConstraints();
+}
+
+function checkLeftScrollConstraints() {
+  const scrollLeftBtn = document.querySelector("#scroll-left-btn");
+  if (hourlyWeatherInfo.scrollLeft === 0) {
+    scrollLeftBtn.className = "scroll-btn left hidden";
+  } else {
+    scrollLeftBtn.className = "scroll-btn left";
+  }
+}
+
+function checkRightScrollConstraints() {
+  const scrollRightBtn = document.querySelector("#scroll-right-btn");
+  if (hourlyWeatherInfo.scrollLeft === 800) {
+    scrollRightBtn.className = "scroll-btn right hidden";
+  } else {
+    scrollRightBtn.className = "scroll-btn right";
+  }
 }
 
 export { updateMainContent, toggleMainContent };
