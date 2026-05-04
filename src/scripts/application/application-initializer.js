@@ -5,9 +5,11 @@ import {
 import { handleStartupError } from "../utilities/error-handler";
 import { loadLocations } from "./location-manager";
 import { displayErrorMessage } from "../ui/error-message-handler";
+import { loadCurrentTempScale } from "../utilities/temp-scale-manager";
 
 const startup = async () => {
   loadLocations();
+  loadCurrentTempScale();
   navigator.permissions.query({ name: "geolocation" }).then((result) => {
     if (result.state === "granted") {
       // If the application already has user location permissions on startup, then it should

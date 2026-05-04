@@ -6,7 +6,7 @@ const modifyTemps = (dailyWeatherInfo, modifyFn) => {
       dailyWeatherInfo[infoType] = modifyFn(dailyWeatherInfo[infoType]);
     }
   }
-
+  
   const hours = dailyWeatherInfo.hours;
   hours.forEach((hourlyWeatherInfo) => {
     for (const infoType in hourlyWeatherInfo) {

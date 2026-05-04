@@ -7,11 +7,21 @@ import {
   toggleLocationsSidebar,
   updateLocationsSidebar,
 } from "./location-sidebar-controller";
+import {
+  getCurrentTempScale,
+  switchCurrentTempScale,
+} from "../utilities/temp-scale-manager";
+import { convertTemps } from "../utilities/temp-converter";
+
+let openLocationWeatherInfo;
+let openLocation;
 
 const mainContent = document.querySelector("#main-content");
 const hourlyWeatherInfo = document.querySelector("#hourly-weather-info");
 
 const updateMainContent = (days, location) => {
+  openLocationWeatherInfo = days;
+  openLocation = location;
   updateHeader(days[0], location);
   updateHourlyWeatherInfo(days[0].hours);
   updateDailyWeatherInfo(days);
@@ -34,6 +44,13 @@ mainContent.addEventListener("click", (event) => {
       updateLocationsSidebar();
       toggleLocationsSidebar();
     },
+    "temp-converter-btn": () => {
+      switchCurrentTempScale();
+      selectedButton.textContent =
+        selectedButton.textContent === "Celsius" ? "Fahrenheit" : "Celsius";
+      convertTemps(openLocationWeatherInfo);
+      updateMainContent(openLocationWeatherInfo, openLocation);
+    },
     "scroll-left-btn": () => {
       hourlyWeatherInfo.scrollLeft -= 100;
       checkScrollConstraints();
@@ -52,6 +69,8 @@ function updateHeader(dailyWeatherInfo, location) {
   const header = document.querySelector("#header");
   header.querySelector("#current-temp").textContent =
     `${dailyWeatherInfo.temp}°`;
+  header.querySelector("#temp-converter-btn").textContent =
+    getCurrentTempScale();
   header.querySelector("#location-name").textContent =
     `${location.city}, ${location.state}`;
   header.querySelector("#feel-like-temp").textContent =

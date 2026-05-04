@@ -1,4 +1,5 @@
 import { saveLocations } from "../application/location-manager";
+import { saveCurrentTempScale } from "./temp-scale-manager";
 
 const storageAvailable = (type) => {
     let storage;
@@ -19,6 +20,9 @@ const storageAvailable = (type) => {
     }
 }
 
-window.addEventListener("unload", () => saveLocations())
+window.addEventListener("unload", () => {
+    saveLocations();
+    saveCurrentTempScale();
+})
 
 export { storageAvailable };

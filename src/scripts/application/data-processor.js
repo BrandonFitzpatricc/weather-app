@@ -1,16 +1,16 @@
 import { addLocation } from "./location-manager";
 import { convertToFahrenheit } from "../utilities/temp-converter";
 import { modifyTemps } from "../utilities/temp-modifier";
+import { getCurrentTempScale } from "../utilities/temp-scale-manager";
 
-const processWeatherInfo = (weatherInfo, tempScale) => {
+const processWeatherInfo = (weatherInfo) => {
   const days = weatherInfo.days;
-  let tempModification;
-  // Temperatures are in celsius by default when weather info is received from the API, so 
-  // there is no need for conversions if the specified temperature scale is celsius. 
+  // Temperatures are in celsius by default when weather info is received from the API, so
+  // there is no need for conversions if the specified temperature scale is celsius.
   // convertToFahrenheit will return a rounded temperature, therefore a supplementary function
   // for rounding the temperature should be provided if no conversion is happening.
-  tempModification =
-    tempScale === "Fahrenheit" ? convertToFahrenheit : Math.round;
+  const tempModification =
+    getCurrentTempScale() === "Fahrenheit" ? convertToFahrenheit : Math.round;
   days.forEach((dailyWeatherInfo) =>
     modifyTemps(dailyWeatherInfo, tempModification),
   );
