@@ -25,9 +25,9 @@ const handleUserLocationWeatherInfo = async () => {
   toggleLoader("#loader", "visible");
   const userAddress = processUserAddress(await fetchUserAddress(userPosition));
   const weatherInfo = processWeatherInfo(await fetchWeatherInfo(userAddress));
-  toggleLoader("#loader");
+  toggleLoader("#loader", "not visible");
   updateMainContent(weatherInfo, getOpenLocation());
-  toggleMainContent("visible", "not visible");
+  toggleMainContent("visible");
 };
 
 export { handleOpenLocationWeatherInfo, handleUserLocationWeatherInfo };

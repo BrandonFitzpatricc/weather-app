@@ -6,6 +6,7 @@ import { handleStartupError } from "../utilities/error-handler";
 import { loadLocations } from "./location-manager";
 import { displayErrorMessage } from "../ui/error-message-handler";
 import { loadCurrentTempScale } from "../utilities/temp-scale-manager";
+import { toggleLoader } from "../ui/load-display-handler";
 
 const startup = async () => {
   loadLocations();
@@ -18,13 +19,19 @@ const startup = async () => {
         // The weather information for the most recently viewed location (set to NYC on initial
         // startup) will be retrieved and displayed as a fallback if the application fails to
         // retrieve the user's location.
-        handleStartupError(handleOpenLocationWeatherInfo, displayErrorMessage),
+        handleStartupError(handleOpenLocationWeatherInfo, () => {
+          displayErrorMessage();
+          toggleLoader("#loader", "not visible");
+        }),
       );
     } else {
       // If the application is either awaiting user location permissions or they have been
       // denied, then it should attempt to retrieve and display the weather information for
       // the most recently viewed location (set to NYC on initial startup).
-      handleStartupError(handleOpenLocationWeatherInfo, displayErrorMessage);
+      handleStartupError(handleOpenLocationWeatherInfo, () => {
+        displayErrorMessage();
+        toggleLoader("#loader", "not visible");
+      });
 
       // Once (or if), the application receives user location permissions, it should attempt
       // to retrieve and display the weather information for the user's location.
