@@ -45,9 +45,9 @@ mainContent.addEventListener("click", (event) => {
       toggleLocationsSidebar();
     },
     "temp-converter-btn": () => {
-      switchCurrentTempScale();
       selectedButton.textContent =
         selectedButton.textContent === "Celsius" ? "Fahrenheit" : "Celsius";
+      switchCurrentTempScale();
       convertTemps(openLocationWeatherInfo);
       updateMainContent(openLocationWeatherInfo, openLocation);
     },
