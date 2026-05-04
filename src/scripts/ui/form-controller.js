@@ -16,9 +16,10 @@ const toggleForm = () => {
 };
 
 form.addEventListener("submit", (event) =>
-  handleFormSubmissionError(submitLocation, event, () =>
-    toggleErrorMessage("visible"),
-  ),
+  handleFormSubmissionError(submitLocation, event, () => {
+    toggleLoader("#new-location-form .loader", "not visible")
+    toggleErrorMessage("visible")
+  }),
 );
 
 formInputs.forEach((input) => {
