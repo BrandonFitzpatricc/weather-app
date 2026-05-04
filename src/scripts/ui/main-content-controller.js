@@ -1,4 +1,4 @@
-import { weatherIcons } from "./icon-handler";
+import { weatherIcons } from "./icon-manager";
 import {
   createDailyWeatherInfoEntry,
   createHourlyWeatherInfoEntry,

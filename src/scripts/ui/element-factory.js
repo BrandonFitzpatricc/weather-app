@@ -1,4 +1,4 @@
-import { weatherIcons, locationIcon, deleteIcon } from "./icon-handler";
+import { weatherIcons, locationIcon, deleteIcon } from "./icon-manager";
 
 const createHourlyWeatherInfoEntry = (hourlyWeatherInfo) => {
   const entry = createElement("div", "", new Attribute("class", "entry"));
