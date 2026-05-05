@@ -7,6 +7,9 @@ import {
 } from "../application/location-manager";
 import { handleOpenLocationWeatherInfo } from "../application/data-handler";
 import { toggleForm } from "./form-controller";
+import { handleLoadError } from "../utilities/error-handler";
+import { displayErrorMessage } from "./error-message-handler";
+import { toggleLoader } from "./load-display-handler";
 
 const locationsSidebar = document.querySelector("#locations-sidebar");
 const newLocationTab = document.querySelector("#new-location-tab");
@@ -40,7 +43,10 @@ locationsSidebar.addEventListener("click", (event) => {
     "close-sidebar-btn": toggleLocationsSidebar,
     "location-btn": () => {
       openLocation(selectedButton.parentElement.dataset.id);
-      handleOpenLocationWeatherInfo();
+      handleLoadError(handleOpenLocationWeatherInfo, () => {
+        displayErrorMessage();
+        toggleLoader("#loader", "not visible");
+      });
       toggleLocationsSidebar();
     },
     "delete-location-btn": () => {
