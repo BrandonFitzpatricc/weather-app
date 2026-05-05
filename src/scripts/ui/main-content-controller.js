@@ -53,11 +53,9 @@ mainContent.addEventListener("click", (event) => {
     },
     "scroll-left-btn": () => {
       hourlyWeatherInfo.scrollLeft -= 100;
-      checkLeftScrollConstraints();
     },
     "scroll-right-btn": () => {
       hourlyWeatherInfo.scrollLeft += 100;
-      checkLeftScrollConstraints();
     },
   };
 
@@ -108,15 +106,6 @@ function updateDailyWeatherInfo(days) {
   days.forEach((weatherInfo) =>
     dailyWeatherInfo.appendChild(createDailyWeatherInfoEntry(weatherInfo)),
   );
-}
-
-function checkLeftScrollConstraints() {
-  const scrollLeftBtn = document.querySelector("#scroll-left-btn");
-  if (hourlyWeatherInfo.scrollLeft === 0) {
-    scrollLeftBtn.className = "scroll-btn left hidden";
-  } else {
-    scrollLeftBtn.className = "scroll-btn left";
-  }
 }
 
 export { updateMainContent, toggleMainContent };
