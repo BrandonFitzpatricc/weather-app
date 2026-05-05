@@ -1,6 +1,6 @@
 import { fetchWeatherInfo } from "../application/data-retriever";
 import { processWeatherInfo } from "../application/data-processor";
-import { addLocation, getOpenLocation } from "../application/location-manager";
+import { getOpenLocation } from "../application/location-manager";
 import { handleFormSubmissionError } from "../utilities/error-handler";
 import { updateMainContent } from "./main-content-controller";
 import { toggleLoader } from "./load-display-handler";
