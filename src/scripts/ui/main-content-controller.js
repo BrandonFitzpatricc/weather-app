@@ -53,12 +53,11 @@ mainContent.addEventListener("click", (event) => {
     },
     "scroll-left-btn": () => {
       hourlyWeatherInfo.scrollLeft -= 100;
-      checkScrollConstraints();
+      checkLeftScrollConstraints();
     },
     "scroll-right-btn": () => {
       hourlyWeatherInfo.scrollLeft += 100;
-      console.log(hourlyWeatherInfo.scrollLeft);
-      checkScrollConstraints();
+      checkLeftScrollConstraints();
     },
   };
 
@@ -85,7 +84,7 @@ function updateHeader(dailyWeatherInfo, location) {
 
   header.querySelector("#low-temp").textContent =
     `Low ${dailyWeatherInfo.tempmin}°`;
-    
+
   const weatherIcon = header.querySelector("#weather-icon");
   weatherIcon.setAttribute("src", weatherIcons[dailyWeatherInfo.icon]);
   weatherIcon.setAttribute("alt", weatherIcons[dailyWeatherInfo.icon]);
@@ -111,26 +110,12 @@ function updateDailyWeatherInfo(days) {
   );
 }
 
-function checkScrollConstraints() {
-  checkLeftScrollConstraints();
-  checkRightScrollConstraints();
-}
-
 function checkLeftScrollConstraints() {
   const scrollLeftBtn = document.querySelector("#scroll-left-btn");
   if (hourlyWeatherInfo.scrollLeft === 0) {
     scrollLeftBtn.className = "scroll-btn left hidden";
   } else {
     scrollLeftBtn.className = "scroll-btn left";
-  }
-}
-
-function checkRightScrollConstraints() {
-  const scrollRightBtn = document.querySelector("#scroll-right-btn");
-  if (hourlyWeatherInfo.scrollLeft === 800) {
-    scrollRightBtn.className = "scroll-btn right hidden";
-  } else {
-    scrollRightBtn.className = "scroll-btn right";
   }
 }
 
