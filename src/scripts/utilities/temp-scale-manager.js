@@ -1,11 +1,11 @@
 import { storageAvailable } from "./storage-handler";
 
-let currentTempScale = "Celsius";
+let currentTempScale = "Fahrenheit";
 
 const getCurrentTempScale = () => currentTempScale;
 
 const switchCurrentTempScale = () => {
-  currentTempScale = currentTempScale === "Celsius" ? "Fahrenheit" : "Celsius";
+  currentTempScale = currentTempScale === "Fahrenheit" ? "Celsius" : "Fahrenheit";
 };
 
 const saveCurrentTempScale = () => {

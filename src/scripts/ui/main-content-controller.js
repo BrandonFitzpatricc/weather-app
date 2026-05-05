@@ -67,18 +67,25 @@ mainContent.addEventListener("click", (event) => {
 
 function updateHeader(dailyWeatherInfo, location) {
   const header = document.querySelector("#header");
+
   header.querySelector("#current-temp").textContent =
     `${dailyWeatherInfo.temp}°`;
+
   header.querySelector("#temp-converter-btn").textContent =
     getCurrentTempScale();
+
   header.querySelector("#location-name").textContent =
     `${location.city}, ${location.state}`;
+
   header.querySelector("#feel-like-temp").textContent =
     `Feels like ${dailyWeatherInfo.feelslike}°`;
+
   header.querySelector("#high-temp").textContent =
     `High ${dailyWeatherInfo.tempmax}°`;
+
   header.querySelector("#low-temp").textContent =
     `Low ${dailyWeatherInfo.tempmin}°`;
+
   const weatherIcon = header.querySelector("#weather-icon");
   weatherIcon.setAttribute("src", weatherIcons[dailyWeatherInfo.icon]);
   weatherIcon.setAttribute("alt", weatherIcons[dailyWeatherInfo.icon]);

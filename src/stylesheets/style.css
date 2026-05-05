@@ -198,12 +198,13 @@ body {
             }
           }
 
-          & .week-day {
+          & .week-day,
+          .week-day + .sub-info {
             width: 150px;
           }
 
           & .sub-info {
-            width: 140px;
+            width: 100px;
           }
         }
       }
