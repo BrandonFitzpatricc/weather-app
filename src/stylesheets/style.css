@@ -212,7 +212,7 @@ body {
   }
 
   & .locations-sidebar {
-    width: max(525px, 32%);
+    width: max(575px, 32%);
     height: 100%;
     background-color: var(--dark-blue);
     opacity: 0.9;

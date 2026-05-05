@@ -4,6 +4,9 @@ import { modifyTemps } from "../utilities/temp-modifier";
 import { getCurrentTempScale } from "../utilities/temp-scale-manager";
 
 const processWeatherInfo = (weatherInfo) => {
+  const location = weatherInfo.resolvedAddress.split(", ");
+  console.log(location);
+  addLocation(location[0], location[1], true);
   const days = weatherInfo.days;
   // Temperatures are in fahrenheit by default when weather info is received from the API, so
   // there is no need for conversions if the specified temperature scale is fahrenheit.
@@ -20,8 +23,7 @@ const processWeatherInfo = (weatherInfo) => {
 const processUserAddress = (userAddress) => {
   userAddress = userAddress.addresses[0].address;
   const city = userAddress.localName;
-  const state = userAddress.countrySubdivisionName;
-  addLocation(city, state, true);
+  const state = userAddress.countrySubdivisionCode;
   return { city, state };
 };
 

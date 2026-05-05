@@ -85,7 +85,7 @@ function updateHeader(dailyWeatherInfo, location) {
 
   header.querySelector("#low-temp").textContent =
     `Low ${dailyWeatherInfo.tempmin}°`;
-
+    
   const weatherIcon = header.querySelector("#weather-icon");
   weatherIcon.setAttribute("src", weatherIcons[dailyWeatherInfo.icon]);
   weatherIcon.setAttribute("alt", weatherIcons[dailyWeatherInfo.icon]);

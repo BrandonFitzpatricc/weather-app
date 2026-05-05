@@ -1,6 +1,6 @@
 import { fetchWeatherInfo } from "../application/data-retriever";
 import { processWeatherInfo } from "../application/data-processor";
-import { addLocation } from "../application/location-manager";
+import { addLocation, getOpenLocation } from "../application/location-manager";
 import { handleFormSubmissionError } from "../utilities/error-handler";
 import { updateMainContent } from "./main-content-controller";
 import { toggleLoader } from "./load-display-handler";
@@ -38,8 +38,7 @@ async function submitLocation(event) {
   const location = { city: formInputs[0].value, state: formInputs[1].value };
   const weatherInfo = processWeatherInfo(await fetchWeatherInfo(location));
   toggleLoader("#new-location-form .loader", "not visible");
-  addLocation(location.city, location.state, true);
-  updateMainContent(weatherInfo, location);
+  updateMainContent(weatherInfo, getOpenLocation());
   prompt.className = "new-location-prompt hidden";
   toggleErrorMessage("not visible");
   form.reset();

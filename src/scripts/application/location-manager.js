@@ -1,7 +1,7 @@
 import { Location } from "./location";
 import { storageAvailable } from "../utilities/storage-handler";
 
-let locations = [new Location("New York", "New York", true)];
+let locations = [new Location("New York", "NY", true)];
 
 const addLocation = (city, state, isOpen) => {
   // There's a possibility that an attempt is made to add a location that has already
