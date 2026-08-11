@@ -1,0 +1,51 @@
+.locations-sidebar {
+  width: max(575px, 32%);
+  height: 100%;
+  background-color: var(--dark-blue);
+  opacity: 0.9;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  & .heading {
+    padding: 25px 35px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    & .heading-text {
+      font-size: 35px;
+      margin-right: auto;
+    }
+
+    & .icon {
+      width: 65px;
+    }
+  }
+
+  & .tab {
+    font-size: 30px;
+    padding: 10px 42px;
+
+    & button {
+      &:first-of-type {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+    }
+
+    &.location {
+      display: flex;
+    }
+
+    &:hover {
+      background-color: var(--dark-blue-hover) !important;
+    }
+
+    &.selected {
+      background-color: var(--dark-blue-selected);
+    }
+  }
+}

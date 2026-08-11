@@ -1,0 +1,96 @@
+.weather-info {
+  width: max(830px, 85%);
+  background-color: var(--light-blue);
+  border-radius: 15px;
+  padding: 15px 30px;
+
+  & .icon {
+    width: 50px;
+  }
+
+  &.hourly {
+    margin-bottom: 35px;
+    display: flex;
+    gap: 28px;
+    overflow: hidden;
+
+    & .scroll-btn {
+      border-radius: 25px;
+      position: absolute;
+      opacity: 0.3;
+      margin-top: 50px;
+
+      &.left {
+        left: 8%;
+      }
+
+      &.right {
+        right: 8%;
+      }
+    }
+
+    & .entry {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2px;
+
+      & .time {
+        font-size: 18px;
+        text-wrap: nowrap;
+      }
+
+      & .temp {
+        font-size: 22px;
+      }
+
+      & .rain-percentage {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        width: 72px;
+
+        & > .icon {
+          width: 30px;
+        }
+      }
+    }
+  }
+
+  &.daily {
+    & .entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      & + .entry {
+        margin-top: 25px;
+      }
+
+      & .week-day {
+        font-size: 25px;
+      }
+
+      & .sub-info {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        & .rain-percentage,
+        .temp {
+          font-size: 23px;
+        }
+      }
+
+      & .week-day,
+      .week-day + .sub-info {
+        width: 150px;
+      }
+
+      & .sub-info {
+        width: 100px;
+      }
+    }
+  }
+}

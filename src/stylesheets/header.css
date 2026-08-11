@@ -1,0 +1,40 @@
+.header {
+  width: 80%;
+  margin-bottom: 50px;
+  display: grid;
+  grid-template-columns: minmax(400px, 1fr) minmax(350px, 3fr);
+  position: relative;
+
+  & .temp.current {
+    font-size: 72px;
+    align-self: end;
+    margin-bottom: -20px;
+  }
+
+  & .location-name {
+    text-wrap: nowrap;
+    font-size: 38px;
+  }
+
+  & .temp-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+  }
+
+  & .icon.weather {
+    grid-area: 1 / 2 / 4 / 3;
+    justify-self: end;
+    width: 250px;
+  }
+
+  & .temp-converter-btn {
+    position: absolute;
+    top: 55px;
+    left: 160px;
+    width: 225px;
+    border: 3px solid #ffffff;
+    padding: 1px 15px;
+    font-size: 30px;
+  }
+}
