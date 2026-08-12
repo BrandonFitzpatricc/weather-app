@@ -39,27 +39,35 @@ const toggleMainContent = (toggleStatus) => {
 mainContent.addEventListener("click", (event) => {
   const selectedButton = event.target;
 
-  const buttonHandler = {
-    "open-sidebar-btn": () => {
-      updateLocationsSidebar();
-      toggleLocationsSidebar();
-    },
-    "temp-converter-btn": () => {
-      selectedButton.textContent =
-        selectedButton.textContent === "Celsius" ? "Fahrenheit" : "Celsius";
-      switchCurrentTempScale();
-      convertTemps(openLocationWeatherInfo);
-      updateMainContent(openLocationWeatherInfo, openLocation);
-    },
-    "scroll-left-btn": () => {
-      hourlyWeatherInfo.scrollLeft -= 100;
-    },
-    "scroll-right-btn": () => {
-      hourlyWeatherInfo.scrollLeft += 100;
-    },
-  };
+  if (selectedButton.id === "open-sidebar-btn") {
+    updateLocationsSidebar();
+    toggleLocationsSidebar();
+  } else if (selectedButton.id === "temp-converter-btn") {
+    selectedButton.textContent =
+      selectedButton.textContent === "Celsius" ? "Fahrenheit" : "Celsius";
+      
+    switchCurrentTempScale();
+    convertTemps(openLocationWeatherInfo);
+    updateMainContent(openLocationWeatherInfo, openLocation);
+  }
+});
 
-  buttonHandler[selectedButton.id]();
+let interval;
+
+// prettier-ignore
+hourlyWeatherInfo.querySelector("#scroll-right-btn").addEventListener("mousedown", () => {
+    interval = setInterval(() => (hourlyWeatherInfo.scrollLeft += 5), 5);
+  });
+
+// prettier-ignore
+hourlyWeatherInfo.querySelector("#scroll-left-btn").addEventListener("mousedown", () => {
+  interval = setInterval(() => (hourlyWeatherInfo.scrollLeft -= 5), 5);
+});
+
+hourlyWeatherInfo.querySelectorAll(".scroll-btn").forEach((btn) => {
+  btn.addEventListener("mouseup", () => {
+    clearInterval(interval);
+  });
 });
 
 function updateHeader(dailyWeatherInfo, location) {
