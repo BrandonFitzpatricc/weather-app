@@ -5,6 +5,6 @@ import "../stylesheets/weather-info.css";
 import "../stylesheets/locations-sidebar.css";
 import "../stylesheets/new-location-prompt.css";
 
-import { startup } from "./application/application-initializer";
+import { startup } from "./controller/startup-controller";
 
 startup();

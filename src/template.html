@@ -5,122 +5,14 @@
   </head>
 
   <body>
-    <div id="main-content" class="main-content hidden">
-      <button id="open-sidebar-btn" class="open-sidebar-btn">
-        <img
-          class="icon"
-          src="./icons/input-icons/open-sidebar.svg"
-          alt="menu selection icon"
-          width="65"
-          height="65"
-        />
-      </button>
+    <div id="main-content" class="main-content"></div>
 
-      <div id="header" class="header">
-        <div id="current-temp" class="temp current"></div>
-        <button id="temp-converter-btn" class="temp-converter-btn"></button>
-        <div id="location-name" class="location-name"></div>
-        <div class="temp-info">
-          <div id="feel-like-temp" class="temp feel-like"></div>
-          <div id="high-temp" class="temp high"></div>
-          <div id="low-temp" class="temp low"></div>
-        </div>
-
-        <img id="weather-icon" class="icon weather" width="250" height="250" />
-      </div>
-
-      <div id="hourly-weather-info" class="weather-info hourly">
-        <button id="scroll-left-btn" class="scroll-btn left">
-          <img
-            class="icon"
-            src="./icons/input-icons/scroll-left.svg"
-            alt="scroll-left-icon"
-            width="50"
-            height="50"
-          />
-        </button>
-
-        <button id="scroll-right-btn" class="scroll-btn right">
-          <img
-            class="icon"
-            src="./icons/input-icons/scroll-right.svg"
-            alt="scroll-left-icon"
-            width="50"
-            height="50"
-          />
-        </button>
-      </div>
-
-      <div id="daily-weather-info" class="weather-info daily"></div>
-    </div>
-
-    <div id="locations-sidebar" class="locations-sidebar hidden">
-      <div class="heading">
-        <img
-          class="icon"
-          src="./icons/input-icons/locations.svg"
-          alt="locations icon"
-          width="65"
-          height="65"
-        />
-        <div class="heading-text">Locations</div>
-        <button class="close-sidebar-btn">
-          <img
-            class="icon"
-            src="./icons/input-icons/close-sidebar.svg"
-            alt="collapse sidebar icon"
-            width="65"
-            height="65"
-          />
-        </button>
-      </div>
-
-      <div id="new-location-tab" class="tab new-location">
-        <button class="add-location-btn">
-          <img
-            class="icon"
-            src="./icons/input-icons/add.svg"
-            alt="add icon"
-            width="55"
-            height="55"
-          />
-          <div class="btn-text">New Location</div>
-        </button>
-      </div>
-    </div>
+    <div id="locations-sidebar" class="locations-sidebar hidden"></div>
 
     <div id="new-location-prompt" class="new-location-prompt hidden">
-      <form id="new-location-form" class="new-location-form">
-        <div class="form-title">New Location</div>
-
-        <div class="form-field">
-          <label for="city">City</label>
-          <input type="text" id="city" required pattern="^[a-zA-Z\s]*$" />
-        </div>
-
-        <div class="form-field">
-          <label for="state">State</label>
-          <input type="text" id="state" required pattern="^[a-zA-Z\s]*$" />
-        </div>
-
-        <button class="enter-btn" type="submit">Enter</button>
-
-        <div id="error-message" class="error-message hidden">
-          Location Not Found
-        </div>
-
-        <button type="button" id="back-btn" class="back-btn">
-          <img
-            class="icon"
-            src="./icons/input-icons/back.svg"
-            alt="back icon"
-          />
-        </button>
-
-        <div class="loader hidden"></div>
-      </form>
+      <div id="prompt-submission-loader" class="loader hidden"></div>
     </div>
 
-    <div id="loader" class="loader hidden"></div>
+    <div id="main-content-loader" class="loader hidden"></div>
   </body>
 </html>

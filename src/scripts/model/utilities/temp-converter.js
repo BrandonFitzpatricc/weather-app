@@ -1,4 +1,4 @@
-import { getCurrentTempScale } from "./temp-scale-manager";
+import { getCurrentTempScale } from "../temp-scale-manager";
 import { modifyTemps } from "./temp-modifier";
 
 const convertTemps = (weatherInfo) => {
@@ -6,8 +6,9 @@ const convertTemps = (weatherInfo) => {
     getCurrentTempScale() === "Celsius"
       ? convertToCelsius
       : convertToFahrenheit;
-  weatherInfo.forEach((dailyWeatherInfo) => {
-    modifyTemps(dailyWeatherInfo, tempConversionFn);
+
+  weatherInfo.forEach((day) => {
+    modifyTemps(day, tempConversionFn);
   });
 };
 
@@ -15,8 +16,8 @@ const convertToCelsius = (temp) => {
   return Math.round(((temp - 32) * 5) / 9);
 };
 
-const convertToFahrenheit = (temp) => {
+function convertToFahrenheit(temp) {
   return Math.round((temp * 9) / 5 + 32);
-};
+}
 
-export { convertTemps, convertToCelsius, convertToFahrenheit };
+export { convertTemps, convertToCelsius };

@@ -1,5 +1,6 @@
 import { Location } from "./location";
-import { storageAvailable } from "../utilities/storage-handler";
+
+import { storageAvailable } from "../controller/utilities/storage-handler";
 
 let locations = [new Location("New York", "NY", true)];
 

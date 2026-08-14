@@ -1,4 +1,4 @@
-import { storageAvailable } from "./storage-handler";
+import { storageAvailable } from "../controller/utilities/storage-handler";
 
 let currentTempScale = "Fahrenheit";
 

@@ -1,5 +1,5 @@
-import { saveLocations } from "../application/location-manager";
-import { saveCurrentTempScale } from "./temp-scale-manager";
+import { saveLocations } from "../../model/location-manager";
+import { saveCurrentTempScale } from "../../model/temp-scale-manager";
 
 const storageAvailable = (type) => {
     let storage;
