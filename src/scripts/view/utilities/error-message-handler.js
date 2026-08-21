@@ -18,7 +18,7 @@ function createErrorMessage() {
   return createTextElement(
     "div",
     "error-message",
-    "Weather information cannot be retrieved at this time.",
+    "Weather information was not able to be retrieved.",
   );
 }
 
