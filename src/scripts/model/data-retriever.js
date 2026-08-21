@@ -44,7 +44,9 @@ const getUserPosition = async () => {
       navigator.geolocation.getCurrentPosition(
         (position) => resolve(position),
         (error) => {
-          if (error.code === 1 || i === 5) {
+          if (error.code === 1) {
+            reject(new Error("User has denied location permission"));
+          } else if (i === 5) {
             reject(new Error("User position could not be obtained"));
           }
         },

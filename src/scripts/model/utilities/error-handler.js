@@ -1,8 +1,8 @@
 const handleLoadError = async (handleInfoFn, handleErrorFn) => {
   try {
     await handleInfoFn();
-  } catch {
-    handleErrorFn();
+  } catch(error) {
+    handleErrorFn(error);
   }
 };
 

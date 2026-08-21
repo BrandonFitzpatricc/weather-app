@@ -37,9 +37,11 @@ const startup = async () => {
 
       // Once (or if), the application receives user location permissions, it should attempt
       // to retrieve and display the weather information for the user's location.
-      handleLoadError(serveUserLocationWeatherInfo, () => {
-        displayErrorMessage();
-        hideLoader("#main-content-loader");
+      handleLoadError(serveUserLocationWeatherInfo, (error) => {
+        if (error.message !== "User has denied location permission") {
+          displayErrorMessage();
+          hideLoader("#main-content-loader");
+        }
       });
     }
   });
