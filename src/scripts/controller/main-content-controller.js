@@ -18,6 +18,7 @@ const initializeMainContent = (days, location) => {
 };
 
 mainContent.addEventListener("click", (event) => {
+  console.log("Is running");
   const selectedButton = event.target;
 
   if (selectedButton.className === "open-sidebar-btn") {
@@ -46,8 +47,8 @@ mainContent.addEventListener("mousedown", (event) => {
   }
 });
 
-mainContent.addEventListener("mouseup", (event) => {
-  if (event.target.className.includes("scroll-btn")) clearInterval(interval);
+mainContent.addEventListener("mouseup", () => {
+  clearInterval(interval);
 });
 
 export { initializeMainContent };

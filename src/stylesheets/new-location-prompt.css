@@ -33,7 +33,6 @@
       input {
         display: block;
         width: 100%;
-        pointer-events: auto;
       }
 
       & label {

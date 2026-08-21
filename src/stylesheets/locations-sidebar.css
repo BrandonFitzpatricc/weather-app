@@ -47,5 +47,9 @@
     &.selected {
       background-color: var(--dark-blue-selected);
     }
+
+    & .location-name, .btn-text {
+      pointer-events: none;
+    }
   }
 }

@@ -9,7 +9,7 @@
   }
 
   &.hourly {
-    pointer-events: auto;
+    /* pointer-events: auto; */
     margin-bottom: 35px;
     display: flex;
     gap: 28px;

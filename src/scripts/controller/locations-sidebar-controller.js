@@ -21,6 +21,7 @@ const hideLocationsSidebar = () => {
 
 locationsSidebar.addEventListener("click", (event) => {
   const selectedButton = event.target;
+  if (selectedButton.nodeName !== "BUTTON") return;
 
   const buttonHandler = {
     "close-sidebar-btn": hideLocationsSidebar,
