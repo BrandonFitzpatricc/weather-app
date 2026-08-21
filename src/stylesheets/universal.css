@@ -69,6 +69,7 @@ body {
       margin-left: 25px;
       width: 65px;
       align-self: flex-start;
+      visibility: visible;
     }
   }
 
