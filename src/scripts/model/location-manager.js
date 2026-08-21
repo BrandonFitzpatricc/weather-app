@@ -59,7 +59,6 @@ const saveLocations = () => {
 
 const loadLocations = () => {
   const savedLocations = JSON.parse(localStorage.getItem("locations"));
-  // console.log(savedLocations);
   if (savedLocations && savedLocations.length !== 0) {
     locations = [];
     savedLocations.forEach((location) => {
