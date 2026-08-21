@@ -9,6 +9,11 @@ const displayErrorMessage = () => {
   document.body.appendChild(createErrorMessage());
 };
 
+const removeErrorMessage = () => {
+  const errorMessage = document.querySelector("body > .error-message");
+  if (errorMessage) document.body.removeChild(errorMessage);
+};
+
 function createErrorMessage() {
   return createTextElement(
     "div",
@@ -17,4 +22,4 @@ function createErrorMessage() {
   );
 }
 
-export { displayErrorMessage };
+export { displayErrorMessage, removeErrorMessage };

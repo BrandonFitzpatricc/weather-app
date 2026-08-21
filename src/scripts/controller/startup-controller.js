@@ -37,9 +37,10 @@ const startup = async () => {
 
       // Once (or if), the application receives user location permissions, it should attempt
       // to retrieve and display the weather information for the user's location.
-      handleLoadError(serveUserLocationWeatherInfo, () =>
-        hideLoader("#main-content-loader"),
-      );
+      handleLoadError(serveUserLocationWeatherInfo, () => {
+        displayErrorMessage();
+        hideLoader("#main-content-loader");
+      });
     }
   });
 };

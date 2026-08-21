@@ -2,6 +2,7 @@ import { showLocationsSidebar } from "./locations-sidebar-controller";
 
 import { updateLocationsSidebar } from "../view/locations-sidebar";
 import { updateMainContent } from "../view/main-content";
+import { removeErrorMessage } from "../view/utilities/error-message-handler";
 
 import { switchCurrentTempScale } from "../model/temp-scale-manager";
 import { convertTemps } from "../model/utilities/temp-converter";
@@ -18,10 +19,10 @@ const initializeMainContent = (days, location) => {
 };
 
 mainContent.addEventListener("click", (event) => {
-  console.log("Is running");
   const selectedButton = event.target;
 
   if (selectedButton.className === "open-sidebar-btn") {
+    removeErrorMessage();
     updateLocationsSidebar();
     showLocationsSidebar();
   } else if (selectedButton.className === "temp-converter-btn") {
