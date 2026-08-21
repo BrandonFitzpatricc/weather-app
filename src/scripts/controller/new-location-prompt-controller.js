@@ -32,6 +32,8 @@ prompt.addEventListener("click", (event) => {
 async function submitLocation(event) {
   event.preventDefault();
 
+  hideErrorMessage();
+
   showLoader("#prompt-submission-loader");
 
   const formInputs = prompt.querySelectorAll("input");
@@ -66,6 +68,10 @@ function checkValidity(event) {
 
 function showErrorMessage() {
   document.querySelector(".error-message").className = "error-message";
+}
+
+function hideErrorMessage() {
+  document.querySelector(".error-message").className = "error-message hidden";
 }
 
 export { openNewLocationPrompt };
