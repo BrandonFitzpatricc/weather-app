@@ -13,6 +13,7 @@ let openLocation;
 const mainContent = document.querySelector("#main-content");
 
 const initializeMainContent = (days, location) => {
+  mainContent.className = mainContent.className.replace("hidden", "");
   openLocationWeatherInfo = days;
   openLocation = location;
   updateMainContent(days, location);
