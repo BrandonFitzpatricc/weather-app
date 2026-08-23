@@ -1,23 +1,36 @@
-# weather-app
+# Weather App
 
-This is a weather website that was created using HTML, CSS, and JavaScript. It uses a combination of requests from multiple APIs to provide formatted weather information for either the current location of a user, or a location provided directly by the user. 
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-563d7c?&style=for-the-badge)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&labelColor=CB3837&logoColor=CB3837)
+![Webpack](https://img.shields.io/badge/Webpack-529ac7?style=for-the-badge&labelColor=8DD6F9&logoColor=226ea9&logo=webpack)
+![Figma](https://img.shields.io/badge/Figma-7e65ee?&style=for-the-badge)
 
-Weather information is obtained from GET requests to the Visual Crossing Weather API. The responses from these requests are first processed by the application, which will obtain, save, and manipulate the data from the response as needed. Upon the completion of processing a successful request, the following data will be displayed for the corresponding location:
-- The current temperature
-- The current conditions (represented by an icon)
-- The city and state
-- The current feel like temperature
-- The current high temperature
-- The current low temperature
-- The expected conditions, temperature, and rain probability for every hour of the current day
-- The expected rain probability, day/night conditions, and high/low temperatures for each day in the upcoming week (including the current day)
+This is a web application built using the MVC architectural pattern. It utilizes a combination of requests from various APIs to serve formatted weather information to the user, for either their current location or a location of their choice.
 
-When a request is made to a new location, that location will be saved. Saved locations can be accessed through a toggleable sidebar, where they can be clicked on to request the current weather information for that location, or deleted. 
+<b>NOTE:</b> This application only officially supports desktop and laptop devices. Official support for mobile devices will come in a future patch.
 
-If a user has given the application location permissions, then on startup, the application will first use the built in Geolocation API to obtain the coordinates of the user. Those coordinates will then be passed to the tomtom Maps API, which will use reverse geocoding to obtain the corresponding city and state. Lastly, this city and state will be passed to the Visual Crossing Weather API, and the data retrieved will be processed and displayed as outlined above. 
+## Features
+- Display the following weather information for any location:
+  - The current temperature
+  - The current conditions (represented by an icon)
+  - The city and state
+  - The current feel like temperature
+  - The current high temperature
+  - The current low temperature
+  - The expected conditions, temperature, and rain probability for every hour of the current day
+  - The expected rain probability, day/night conditions, and high/low temperatures for each day in the upcoming week (including the current day)
+- Request the weather info for a location through geolocation with the user's permission
+- Request the weather info for a location a location through a form for searching locations
+- Request the weather info for a previously accessed location through a toggleable sidebar
+- Reattempt failed requests multiple times through the use of exponential backoff
+- Save existing locations upon closing the application and load them upon opening it
 
-Alternatively, the sidebar provides a button to bring up a form where the user can manually enter a location to save it and retrieve its weather information. If this form is submitted with a valid city and state, then they will be passed to the Visual Crossing Weather API, and the data retrieved will be processed and displayed as outlined above.
+## APIs used
+- <b>The Visual Crossing Weather API:</b> used for obtaining weather information when queried with a location
+- <b>The Geolocation Web API:</b> used for obtaining the current user's coordinates with their permission
+- <b>The TomTom Maps API:</b> used to parse coordinates from the Geolocation API into a city and state that can be passed to the Visual Crossing Weather API through reverse geocoding
 
-The interface provides a button that will convert each temperature displayed between fahrenheit and celsius. The current temperature scale selected will be saved, similarly to locations.
-
-This project demonstrates proficient use of HTML, CSS, and JavaScript, along with the use of APIs to request and process external data. It utilizes promise-based asynchronous JavaScript to make requests to multiple APIs without disrupting the user experience. 
+## Author
+I'm <a href="https://github.com/BrandonFitzpatricc">Brandon Fitzpatrick</a>, the designer and programmer behind this application. I created this application to improve my understanding of asynchronous JavaScript and API requests. I wanted to create something that utilizes multiple APIs in conjunction with each other, where the data received from one API is used within the request to another. Building this application involved designing and creating a pipeline of passing data between APIs, and has greatly strengthened my ability to utilize them effectively.
